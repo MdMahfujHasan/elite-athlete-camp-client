@@ -91,15 +91,15 @@ const SignUp = () => {
                                 className="input focus:outline-0 border-violet-400 focus:border-2"
                                 {...register("password", {
                                     required: true,
-                                    minLength: 8,
+                                    minLength: 6,
                                     maxLength: 120,
                                     pattern: /(?=.*[A-Z])(?=.*[!@#$%^&*])/
                                 })}
                             />
                             {errors.password?.type === "required" && <small className='text-rose-400'>Password is required</small>}
-                            {errors.password?.type === "minLength" && <small className='text-rose-400'>Password must be minimum 8 characters</small>}
+                            {errors.password?.type === "minLength" && <small className='text-rose-400'>Password must be minimum 6 characters</small>}
                             {errors.password?.type === "maxLength" && <small className='text-rose-400'>Max password length exceeded</small>}
-                            {errors.password?.type === "pattern" && <small className='text-rose-400'>Password must include at least 1 capital letter and special digit</small>}
+                            {errors.password?.type === "pattern" && <small className='text-rose-400'>Password must include at least 1 capital letter and a special digit</small>}
                         </div>
 
                         <div className="form-control">

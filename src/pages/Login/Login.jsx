@@ -2,10 +2,13 @@ import { useForm } from 'react-hook-form';
 import GoogleLogin from '../../components/SocialLogin/GoogleLogin';
 import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { HiEye, HiEyeOff } from 'react-icons/hi';
 
 const Login = () => {
     const { signIn } = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [hide, setHide] = useState(true);
     const onSubmit = data => {
         signIn(data.email, data.password)
             .then(result => {
@@ -39,17 +42,23 @@ const Login = () => {
                             {errors.email && <small className='text-rose-400'>Enter your email address</small>}
                         </div>
 
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text"><b>P</b>assword</span>
                             </label>
                             <input
-                                type="password"
+                                type={hide ? "password" : "text"}
                                 name="password"
                                 placeholder="Password"
                                 className="input focus:outline-0 border-violet-400 focus:border-2"
                                 {...register("password", { required: true })}
                             />
+                            <small
+                                onClick={() => setHide(!hide)}
+                                className="absolute right-3 bottom-4 text-xs font-semibold hover:cursor-pointer">
+                                {hide ? <HiEyeOff className="text-lg text-violet-500" /> :
+                                    <HiEye className="text-lg text-violet-500" />}
+                            </small>
                             {errors.password && <small className='text-rose-400'>Enter your password</small>}
                         </div>
 

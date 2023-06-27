@@ -5,7 +5,7 @@ const Footer = () => {
     const currentYear = format(new Date(), 'yyyy');
 
     return (
-        <footer className="footer footer-center p-10 bg-violet-400 text-primary-content">
+        <footer className="footer footer-center p-10 bg-violet-950 text-primary-content">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="50" fill="black" />
@@ -35,20 +35,18 @@ const Footer = () => {
                 <p className="font-bold">
                     Elite Sports Camp<br />Unleash Your Skills, Embrace the Summer
                 </p>
-                <p>Copyright © {currentYear} - All right reserved</p>
+                <small>EAC ©{currentYear} - All rights reserved</small>
             </div>
-            <div>
-                <div className="grid grid-flow-col gap-4 text-2xl">
-                    <a target='_blank' rel='noreferrer' href="https://www.facebook.com">
-                        <AiFillFacebook className='text-blue-700' />
-                    </a>
-                    <a target='_blank' rel='noreferrer' href="https://www.instagram.com">
-                        <AiFillInstagram className='text-rose-700' />
-                    </a>
-                    <a target='_blank' rel='noreferrer' href="https://www.youtube.com">
-                        <AiFillYoutube className='text-red-700' />
-                    </a>
-                </div>
+            <div className="grid grid-flow-col gap-4 text-xl">
+                <a target='_blank' rel='noreferrer' href="https://www.facebook.com">
+                    <AiFillFacebook className='text-blue-500' />
+                </a>
+                <a target='_blank' rel='noreferrer' href="https://www.instagram.com">
+                    <AiFillInstagram className='text-rose-500' />
+                </a>
+                <a target='_blank' rel='noreferrer' href="https://www.youtube.com">
+                    <AiFillYoutube className='text-red-500' />
+                </a>
             </div>
         </footer>
     );
