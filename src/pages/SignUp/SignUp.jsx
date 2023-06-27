@@ -1,12 +1,47 @@
 import { useForm } from 'react-hook-form';
+import GoogleLogin from '../../components/SocialLogin/GoogleLogin';
+import useAuth from '../../hooks/useAuth';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
+    const { createUser, updateUserProfile } = useAuth();
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const password = watch("password");
+    const navigate = useNavigate();
+
     const onSubmit = data => {
         console.log(data)
-    };
-    console.log(errors);
+        createUser(data.email, data.password)
+            .then(() => {
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        const saveUser = { name: data.name, email: data.email };
+                        console.log(saveUser)
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                                if (data.insertedId) {
+                                    Swal.fire(
+                                        'Hello there,',
+                                        'Your account has been created!',
+                                        'success'
+                                    )
+                                    navigate("/");
+                                }
+                            })
+                    })
+                    .catch(error => console.log(error))
+            })
+
+    }
 
     return (
         <div className="hero min-h-screen bg-violet-100">
@@ -15,7 +50,7 @@ const SignUp = () => {
                     <h1 className="text-3xl md:text-5xl font-bold text-center text-violet-500">Sign Up</h1>
                     <p className="py-6 text-sm md:text-lg text-slate-400 font-serif text-center">Experience the ultimate summer of growth: instructors, offer inspiring classes; students, enroll in extraordinary learning adventures. Sign up now!</p>
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 pb-4">
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
                         <div className="form-control">
@@ -162,15 +197,15 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>P</b>hoto URL</span>
+                                <span className="label-text"><b>P</b>hoto</span>
                             </label>
                             <input
-                                type="file"
-                                {...register("photo", { required: true })}
+                                type="text"
+                                placeholder="Photo URL"
+                                className="input focus:outline-0 border-violet-400 focus:border-2"
+                                {...register("photoURL", { required: true })}
                             />
-                            {errors.photo && (
-                                <small className="text-rose-400">Photo URL is required</small>
-                            )}
+                            {errors.photoURL && <small className="text-rose-400">Photo URL is required</small>}
                         </div>
 
                         <div className="form-control mt-6">
@@ -180,7 +215,9 @@ const SignUp = () => {
                                 className='btn bg-violet-400 hover:bg-violet-500 text-white'
                             />
                         </div>
+                        <p className='text-center text-violet-400'><small>Already have an account? <Link className='text-blue-400 hover:underline' to="/login">Login</Link></small></p>
                     </form>
+                    <GoogleLogin></GoogleLogin>
                 </div>
             </div>
         </div>
