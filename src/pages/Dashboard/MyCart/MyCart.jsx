@@ -3,6 +3,8 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import Swal from "sweetalert2";
 
 const MyCart = () => {
+    const [cart, refetch] = useCart();
+    const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
     const handleDelete = item => {
         Swal.fire({
             title: 'Are you sure?',
@@ -31,7 +33,6 @@ const MyCart = () => {
             }
         })
     }
-    const [cart, refetch] = useCart();
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -43,7 +44,8 @@ const MyCart = () => {
                         <th>Price</th>
                         <th>Email</th>
                         <th>Delete</th>
-                        <th>
+                        <th className="space-x-2">
+                            <small className="text-base text-slate-500">${totalPrice}</small>
                             <button className="btn btn-sm btn-success text-white">Pay</button>
                         </th>
                     </tr>
