@@ -1,19 +1,31 @@
 import { useForm } from 'react-hook-form';
 import GoogleLogin from '../../components/SocialLogin/GoogleLogin';
 import useAuth from '../../hooks/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { signIn } = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [hide, setHide] = useState(true);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const onSubmit = data => {
         signIn(data.email, data.password)
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser)
+                console.log(loggedInUser);
+                Swal.fire(
+                    'Good job!',
+                    'User Login Successful!',
+                    'success'
+                )
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);

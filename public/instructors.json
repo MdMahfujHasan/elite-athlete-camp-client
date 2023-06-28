@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Yusuf Ahmed",
+        "img": "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 40
+    },
+    {
+        "name": "Ibrahim Khan",
+        "img": "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 35
+    },
+    {
+        "name": "Ali Abbas",
+        "img": "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 45
+    },
+    {
+        "name": "Omar Hassan",
+        "img": "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 30
+    },
+    {
+        "name": "Ahmed Malik",
+        "img": "https://images.pexels.com/photos/716411/pexels-photo-716411.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 38
+    },
+    {
+        "name": "Hamza Ali",
+        "img": "https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 50
+    },
+    {
+        "name": "Khalid Amin",
+        "img": "https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 32
+    },
+    {
+        "name": "Ismail Hussein",
+        "img": "https://images.pexels.com/photos/769745/pexels-photo-769745.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "students": 22
+    }
+]

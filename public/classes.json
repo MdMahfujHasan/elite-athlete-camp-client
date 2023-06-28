@@ -3,48 +3,64 @@
         "name": "Football (Soccer)",
         "img": "https://images.pexels.com/photos/3148452/pexels-photo-3148452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "students": 40,
-        "price": 50
+        "price": 50,
+        "instructor": "Yusuf Ahmed",
+        "availableSeats": 6
     },
     {
         "name": "Table Tennis",
         "img": "https://images.pexels.com/photos/569986/pexels-photo-569986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "students": 35,
-        "price": 30
+        "price": 30,
+        "instructor": "Ibrahim Khan",
+        "availableSeats": 23
     },
     {
         "name": "Martial Arts",
         "img": "https://images.pexels.com/photos/2628206/pexels-photo-2628206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "students": 45,
-        "price": 55
+        "price": 55,
+        "instructor": "Ali Abbas",
+        "availableSeats": 12
     },
     {
         "name": "Archery",
         "img": "https://images.pexels.com/photos/6540720/pexels-photo-6540720.jpeg?auto=compress&cs=tinysrgb&w=600",
         "students": 30,
-        "price": 25
+        "price": 25,
+        "instructor": "Omar Hassan",
+        "availableSeats": 55
     },
     {
         "name": "Cycling",
         "img": "https://images.pexels.com/photos/5807630/pexels-photo-5807630.jpeg?auto=compress&cs=tinysrgb&w=600",
         "students": 38,
-        "price": 20
+        "price": 20,
+        "instructor": "Ahmed Malik",
+        "availableSeats": 41
     },
     {
         "name": "Swimming",
         "img": "https://images.pexels.com/photos/1415810/pexels-photo-1415810.jpeg?auto=compress&cs=tinysrgb&w=600",
         "students": 50,
-        "price": 25
+        "price": 25,
+        "instructor": "Hamza Ali",
+        "availableSeats": 48
     },
     {
         "name": "Running and Jogging",
         "img": "https://images.pexels.com/photos/6455591/pexels-photo-6455591.jpeg?auto=compress&cs=tinysrgb&w=600",
         "students": 32,
-        "price": 10
+        "price": 10,
+        "instructor": "Khalid Amin",
+        "availableSeats": 25
     },
     {
         "name": "Badminton",
         "img": "https://images.pexels.com/photos/3660204/pexels-photo-3660204.jpeg?auto=compress&cs=tinysrgb&w=600",
         "students": 22,
-        "price": 15
+        "price": 15,
+        "instructor": "Ismail Hussein",
+        "availableSeats": 33
     }
 ]
