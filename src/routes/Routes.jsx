@@ -6,6 +6,10 @@ import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
+import Dashboard from "../layout/Dashboard";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +37,20 @@ const router = createBrowserRouter([
     {
         path: "signup",
         element: <SignUp></SignUp>
+    },
+    {
+        path: "dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: "user-home",
+                element: <UserHome></UserHome>
+            },
+            {
+                path: "my-cart",
+                element: <MyCart></MyCart>
+            }
+        ]
     },
     {
         path: "*",
