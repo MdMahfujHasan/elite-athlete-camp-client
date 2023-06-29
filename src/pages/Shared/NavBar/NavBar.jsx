@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
+// import useAdmin from "../../../hooks/useAdmin";
+// import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
+    // const [isAdmin] = useAdmin();
+    // const [isInstructor] = useInstructor();
+
     const navInfo = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
         {user && <li><Link to="/dashboard/my-cart">Dashboard</Link></li>}
+        {/* <li><Link to={isAdmin ? "/dashboard/admin-home" : (isInstructor ? "/dashboard/instructor-home" :
+            "/dashboard/user-home"
+        )}>Dashboard</Link></li> */}
         {!user && <li><Link to="/login">Login</Link></li>}
         <li>{user?.email}</li>
     </>

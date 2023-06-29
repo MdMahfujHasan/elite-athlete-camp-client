@@ -10,6 +10,9 @@ import Dashboard from "../layout/Dashboard";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
 import PrivateRoute from "./PrivateRoute";
+import InstructorHome from "../pages/Dashboard/InstructorHome/InstructorHome";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 
 const router = createBrowserRouter([
     {
@@ -47,8 +50,20 @@ const router = createBrowserRouter([
                 element: <UserHome></UserHome>
             },
             {
+                path: "instructor-home",
+                element: <InstructorHome></InstructorHome>
+            },
+            {
+                path: "admin-home",
+                element: <AdminHome></AdminHome>
+            },
+            {
                 path: "my-cart",
                 element: <MyCart></MyCart>
+            },
+            {
+                path: "my-classes",
+                element: <MyClasses></MyClasses>
             }
         ]
     },

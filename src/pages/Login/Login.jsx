@@ -43,7 +43,7 @@ const Login = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>E</b>mail</span>
+                                <span className="label-text">Email</span>
                             </label>
                             <input
                                 type="email"
@@ -56,7 +56,7 @@ const Login = () => {
 
                         <div className="form-control relative">
                             <label className="label">
-                                <span className="label-text"><b>P</b>assword</span>
+                                <span className="label-text">Password</span>
                             </label>
                             <input
                                 type={hide ? "password" : "text"}

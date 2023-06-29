@@ -40,7 +40,6 @@ const SignUp = () => {
                     })
                     .catch(error => console.log(error))
             })
-
     }
 
     return (
@@ -55,7 +54,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>N</b>ame</span>
+                                <span className="label-text">Name</span>
                             </label>
                             <input
                                 type="text"
@@ -69,7 +68,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>E</b>mail</span>
+                                <span className="label-text">Email</span>
                             </label>
                             <input
                                 type="email"
@@ -82,7 +81,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>P</b>assword</span>
+                                <span className="label-text">Password</span>
                             </label>
                             <input
                                 type="password"
@@ -104,7 +103,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>C</b>onfirm Password</span>
+                                <span className="label-text">Confirm Password</span>
                             </label>
                             <input
                                 type="password"
@@ -121,7 +120,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>P</b>hone</span>
+                                <span className="label-text">Phone</span>
                             </label>
                             <input
                                 type="tel"
@@ -147,7 +146,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>A</b>ddress</span>
+                                <span className="label-text">Address</span>
                             </label>
                             <textarea
                                 placeholder="Current Address"
@@ -161,7 +160,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>G</b>ender</span>
+                                <span className="label-text">Gender</span>
                             </label>
                             <div className="flex items-center space-x-4">
                                 <label>
@@ -197,7 +196,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text"><b>P</b>hoto</span>
+                                <span className="label-text">Photo</span>
                             </label>
                             <input
                                 type="text"

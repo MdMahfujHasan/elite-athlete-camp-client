@@ -4,7 +4,6 @@ import ClassCard from "./ClassCard";
 
 const Classes = () => {
     const [classes] = useDetailedClasses();
-    console.log(classes)
     return (
         <>
             <SectionTitle title="All Courses" heading="Every Classes"></SectionTitle>

@@ -1,16 +1,21 @@
 import { Link, Outlet } from "react-router-dom";
-import useAdmin from "../hooks/useAdmin";
+// import useAdmin from "../hooks/useAdmin";
 import useCart from "../hooks/useCart";
+// import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
     const [cart] = useCart();
-    const [isAdmin] = useAdmin();
+    // const [isAdmin] = useAdmin();
+    // const [isInstructor] = useInstructor();
 
     const navInfo = <>
-        <li><Link to="/dashboard/user-home">Home</Link></li>
+        <li className="bg-violet-200 rounded"><Link to="/">EAC</Link></li>
+        <li><Link to="/dashboard">Home</Link></li>
         <li><Link to="/dashboard/my-cart">My Cart</Link></li>
-        <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/instructors">Instructors</Link></li>
+        <li><Link to="/dashboard/user-home">User Home</Link></li>
+        <li><Link to="/dashboard/instructor-home">Instructor Home</Link></li>
+        <li><Link to="/dashboard/admin-home">Admin Home</Link></li>
+        <li><Link to="/dashboard/my-classes">My Classes</Link></li>
     </>
 
     return (
