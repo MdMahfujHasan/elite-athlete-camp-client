@@ -36,7 +36,6 @@ const MyCart = () => {
     return (
         <div className="overflow-x-auto">
             <table className="table">
-                {/* head */}
                 <thead>
                     <tr>
                         <th>#</th>
@@ -62,7 +61,7 @@ const MyCart = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="font-bold">{item.courseName}</div>
+                                        <div className="font-semibold">{item.courseName}</div>
                                         <div className="text-sm opacity-50">by {item.instructorName}</div>
                                     </div>
                                 </div>

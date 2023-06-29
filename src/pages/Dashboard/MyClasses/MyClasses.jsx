@@ -58,8 +58,12 @@ const MyClasses = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="font-semibold text-lg">{myClass.courseName}</div>
-                                        <div className={myClass.status === "approved" ? "bg-green-400 badge rounded-full text-white" : "bg-violet-400 badge rounded-full text-white"}
+                                        <div className="font-semibold">{myClass.courseName}</div>
+                                        <div
+                                            className={
+                                                myClass.status === "approved" ? "bg-green-400 badge rounded-full text-white" :
+                                                    myClass.status === "denied" ? "bg-red-400 badge rounded-full text-white" :
+                                                        "bg-violet-400 badge rounded-full text-white"}
                                         >{myClass.status}</div>
                                     </div>
                                 </div>

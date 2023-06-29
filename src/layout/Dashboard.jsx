@@ -1,21 +1,26 @@
 import { Link, Outlet } from "react-router-dom";
 // import useAdmin from "../hooks/useAdmin";
 import useCart from "../hooks/useCart";
+import useMyClasses from "../hooks/useMyClasses";
+import useAllClasses from "../hooks/useAllClasses";
 // import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
     const [cart] = useCart();
+    const [myClasses] = useMyClasses();
+    const [allClasses] = useAllClasses();
     // const [isAdmin] = useAdmin();
     // const [isInstructor] = useInstructor();
 
     const navInfo = <>
         <li className="bg-violet-200 rounded"><Link to="/">EAC</Link></li>
         <li><Link to="/dashboard">Home</Link></li>
-        <li><Link to="/dashboard/my-cart">My Cart</Link></li>
+        <li><Link to="/dashboard/my-cart">My Cart<span className="badge badge-warning badge-sm text-white">{cart.length}</span></Link></li>
         <li><Link to="/dashboard/user-home">User Home</Link></li>
         <li><Link to="/dashboard/instructor-home">Instructor Home</Link></li>
         <li><Link to="/dashboard/admin-home">Admin Home</Link></li>
-        <li><Link to="/dashboard/my-classes">My Classes</Link></li>
+        <li><Link to="/dashboard/my-classes">My Classes<span className="badge badge-info badge-sm text-white">{myClasses.length}</span></Link></li>
+        <li><Link to="/dashboard/all-classes">All Classes<span className="badge badge-success badge-sm text-white">{allClasses.length}</span></Link></li>
     </>
 
     return (
