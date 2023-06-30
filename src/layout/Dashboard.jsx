@@ -16,6 +16,7 @@ const Dashboard = () => {
         <li className="bg-violet-200 rounded"><Link to="/">EAC</Link></li>
         <li><Link to="/dashboard">Home</Link></li>
         <li><Link to="/dashboard/my-cart">My Cart<span className="badge badge-warning badge-sm text-white">{cart.length}</span></Link></li>
+        <li><Link to="/dashboard/payment-history">Payment History</Link></li>
         <li><Link to="/dashboard/user-home">User Home</Link></li>
         <li><Link to="/dashboard/instructor-home">Instructor Home</Link></li>
         <li><Link to="/dashboard/admin-home">Admin Home</Link></li>

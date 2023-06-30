@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 // import useAdmin from "../../../hooks/useAdmin";
 // import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
+    const [cart] = useCart();
     // const [isAdmin] = useAdmin();
     // const [isInstructor] = useInstructor();
 
@@ -13,7 +15,7 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        {user && <li><Link to="/dashboard/my-cart">Dashboard</Link></li>}
+        {user && <li><Link to="/dashboard/my-cart">Dashboard<span className="badge badge-sm badge-neutral">{cart.length}</span></Link></li>}
         {/* <li><Link to={isAdmin ? "/dashboard/admin-home" : (isInstructor ? "/dashboard/instructor-home" :
             "/dashboard/user-home"
         )}>Dashboard</Link></li> */}

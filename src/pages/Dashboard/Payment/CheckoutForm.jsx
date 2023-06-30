@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { format } from 'date-fns'
 
 const CheckoutForm = ({ cart, price }) => {
     const stripe = useStripe();
@@ -12,6 +13,7 @@ const CheckoutForm = ({ cart, price }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const currentDate = format(new Date(), 'MM/dd/yyyy');
 
     useEffect(() => {
         if (price > 0) {
@@ -70,10 +72,11 @@ const CheckoutForm = ({ cart, price }) => {
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
             const payment = {
+                name: user?.displayName,
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
-                date: new Date(),
+                date: currentDate,
                 status: 'service pending',
                 quantity: cart.length,
                 cartItems: cart.map(item => item._id)
@@ -89,7 +92,7 @@ const CheckoutForm = ({ cart, price }) => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="w-1/2 mx-auto bg-base-200 p-14 mt-4">
                 <CardElement
                     options={{
                         style: {
@@ -108,11 +111,11 @@ const CheckoutForm = ({ cart, price }) => {
                 />
                 <button
                     type="submit"
-                    className="btn btn-primary btn-xs mt-3"
-                    disabled={!stripe || !clientSecret || processing}>Pay
+                    className="btn btn-accent btn-xs text-white mt-2.5"
+                    disabled={!stripe || !clientSecret || processing}>Pay Now
                 </button>
             </form>
-            {cardError && <p className="text-red-400 text-sm font-medium">{cardError}</p>}
+            {cardError && <p className="text-red-400 text-sm font-medium text-center mt-1">{cardError}</p>}
             {transactionId && <p className="text-green-400 text-center mt-1"><small>Transaction completed with transaction ID: <span className="text-blue-400">{transactionId}</span></small></p>}
         </>
     );

@@ -46,9 +46,9 @@ const MyCart = () => {
                         <th>Email</th>
                         <th>Delete</th>
                         <th className="space-x-2">
-                            <small className="text-base text-slate-500">${totalPrice}</small>
+                            <small className="text-lg text-slate-400">${totalPrice}</small>
                             <Link to="/dashboard/payment">
-                                <button className="btn btn-sm btn-success text-white">Pay</button>
+                                <button className="btn btn-xs btn-success text-white">Checkout</button>
                             </Link>
                         </th>
                     </tr>
