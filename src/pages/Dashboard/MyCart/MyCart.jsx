@@ -69,7 +69,9 @@ const MyCart = () => {
                             <td>${item.price}</td>
                             <td>{item.email}</td>
                             <th>
-                                <button onClick={() => handleDelete(item)} className="btn btn-error btn-xs"><RiDeleteBin5Fill className="text-lg text-white" /></button>
+                                <button onClick={() => handleDelete(item)}>
+                                    <RiDeleteBin5Fill className="text-2xl text-red-400 hover:text-red-500" />
+                                </button>
                             </th>
                         </tr>)
                     }

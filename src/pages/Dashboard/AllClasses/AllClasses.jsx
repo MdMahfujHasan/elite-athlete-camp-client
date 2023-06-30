@@ -1,7 +1,9 @@
 import useAllClasses from "../../../hooks/useAllClasses";
 import { AiFillCheckCircle } from 'react-icons/ai';
 import { TiDelete } from 'react-icons/ti';
+import { FcFeedback } from 'react-icons/fc';
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const AllClasses = () => {
     const [allClasses, refetch] = useAllClasses();
@@ -39,6 +41,40 @@ const AllClasses = () => {
         handleUpdateStatus(id, 'denied');
     };
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = (id) => {
+        setIsModalOpen((prevModalOpen) => ({
+            ...prevModalOpen,
+            [id]: true,
+        }));
+    };
+
+    const handleCloseModal = (id) => {
+        setIsModalOpen((prevModalOpen) => ({
+            ...prevModalOpen,
+            [id]: false,
+        }));
+    };
+
+    const handleSendFeedback = (id, event) => {
+        event.preventDefault();
+        const feedback = event.target.elements.feedback.value;
+        console.log(feedback, id);
+        fetch(`http://localhost:5000/classes/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ feedback: feedback })
+        })
+            .then(res => res.json())
+            .then(() => {
+                refetch();
+                handleCloseModal(id);
+            })
+    }
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -50,7 +86,8 @@ const AllClasses = () => {
                             <th>Instructor Info</th>
                             <th>Price</th>
                             <th>Seats</th>
-                            <th>Students</th>
+                            <th>Enrolled</th>
+                            <th>Available</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -84,6 +121,7 @@ const AllClasses = () => {
                                 <td>${cls.price}</td>
                                 <td>{cls.seats}</td>
                                 <td>{cls.students}</td>
+                                <td>{cls.seats - cls.students}</td>
                                 <td className="flex items-center gap-1">
                                     <button onClick={() => handleApprove(cls._id)}>
                                         <AiFillCheckCircle className="text-2xl text-green-400 hover:text-green-500" />
@@ -91,6 +129,35 @@ const AllClasses = () => {
                                     <button onClick={() => handleDeny(cls._id)}>
                                         <TiDelete className="text-3xl text-rose-400 hover:text-rose-500" />
                                     </button>
+                                    <button onClick={() => handleOpenModal(cls._id)}>
+                                        <FcFeedback className="text-2xl" />
+                                    </button>
+                                    {isModalOpen[cls._id] && (
+                                        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-slate-300 bg-opacity-50">
+                                            <form onSubmit={(event) => handleSendFeedback(cls._id, event)} className="bg-white p-8 rounded-lg w-96">
+                                                <h2 className="text-xl mb-4">Feedback</h2>
+                                                <div className="flex flex-col space-y-4">
+                                                    <input
+                                                        name="feedback"
+                                                        type="text"
+                                                        className="border border-violet-400 p-2 focus:outline-0"
+                                                        placeholder="Leave Feedback"
+                                                        required
+                                                    />
+                                                </div>
+                                                <div className="flex justify-end mt-6">
+                                                    <button onClick={() => handleCloseModal(cls._id)} className="px-4 py-2 mr-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg">
+                                                        Cancel
+                                                    </button>
+                                                    <input
+                                                        type="submit"
+                                                        value="Send"
+                                                        className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg cursor-pointer"
+                                                    />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    )}
                                 </td>
                             </tr>)
                         }

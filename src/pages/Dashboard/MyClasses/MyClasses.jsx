@@ -42,7 +42,9 @@ const MyClasses = () => {
                         <th>Name</th>
                         <th>Instructor Info</th>
                         <th>Price</th>
-                        <th>Total Seats</th>
+                        <th>Seats</th>
+                        <th>Enrolled</th>
+                        <th>Feedback</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -75,8 +77,10 @@ const MyClasses = () => {
                             </td>
                             <td>${myClass.price}</td>
                             <td>{myClass.seats}</td>
+                            <td>{myClass.students}</td>
+                            <td>{myClass.status === "denied" && myClass.feedback}</td>
                             <td>
-                                <button onClick={() => handleDelete(myClass._id)}><RiDeleteBin2Fill className="text-3xl text-red-400" /></button>
+                                <button onClick={() => handleDelete(myClass._id)}><RiDeleteBin2Fill className="text-2xl text-red-400 hover:text-red-500" /></button>
                             </td>
                         </tr>)
                     }
