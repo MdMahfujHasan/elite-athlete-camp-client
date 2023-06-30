@@ -20,7 +20,7 @@ const Dashboard = () => {
         <li><Link to="/dashboard/instructor-home">Instructor Home</Link></li>
         <li><Link to="/dashboard/admin-home">Admin Home</Link></li>
         <li><Link to="/dashboard/my-classes">My Classes<span className="badge badge-info badge-sm text-white">{myClasses.length}</span></Link></li>
-        <li><Link to="/dashboard/all-classes">All Classes<span className="badge badge-success badge-sm text-white">{allClasses.length}</span></Link></li>
+        <li><Link to="/dashboard/all-classes">Manage Classes<span className="badge badge-success badge-sm text-white">{allClasses.length}</span></Link></li>
     </>
 
     return (

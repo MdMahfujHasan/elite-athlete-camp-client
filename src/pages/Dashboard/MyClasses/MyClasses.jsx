@@ -1,6 +1,7 @@
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import useMyClasses from "../../../hooks/useMyClasses";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const MyClasses = () => {
     const [myClasses, refetch] = useMyClasses();
@@ -48,9 +49,17 @@ const MyClasses = () => {
                         <th>Delete</th>
                     </tr>
                 </thead>
-                <tbody>
+                <motion.tbody
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                >
                     {
-                        myClasses.map((myClass, index) => <tr key={myClass._id}>
+                        myClasses.map((myClass, index) => <motion.tr
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            key={myClass._id}>
                             <td>{index + 1}</td>
                             <td>
                                 <div className="flex items-center space-x-3">
@@ -78,13 +87,13 @@ const MyClasses = () => {
                             <td>${myClass.price}</td>
                             <td>{myClass.seats}</td>
                             <td>{myClass.students}</td>
-                            <td>{myClass.status === "denied" && myClass.feedback}</td>
+                            <td>{myClass.status === "denied" && myClass.feedback ? myClass.feedback : null}</td>
                             <td>
                                 <button onClick={() => handleDelete(myClass._id)}><RiDeleteBin2Fill className="text-2xl text-red-400 hover:text-red-500" /></button>
                             </td>
-                        </tr>)
+                        </motion.tr>)
                     }
-                </tbody>
+                </motion.tbody>
             </table>
         </div>
     );

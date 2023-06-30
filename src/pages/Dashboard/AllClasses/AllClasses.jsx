@@ -3,6 +3,7 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import { TiDelete } from 'react-icons/ti';
 import { FcFeedback } from 'react-icons/fc';
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 const AllClasses = () => {
@@ -91,9 +92,17 @@ const AllClasses = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <motion.tbody
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                    >
                         {
-                            allClasses.map((cls, index) => <tr key={cls._id}>
+                            allClasses.map((cls, index) => <motion.tr
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                key={cls._id}>
                                 <td>{index + 1}</td>
                                 <td>
                                     <div className="flex items-center space-x-3">
@@ -123,13 +132,23 @@ const AllClasses = () => {
                                 <td>{cls.students}</td>
                                 <td>{cls.seats - cls.students}</td>
                                 <td className="flex items-center gap-1">
-                                    <button onClick={() => handleApprove(cls._id)}>
-                                        <AiFillCheckCircle className="text-2xl text-green-400 hover:text-green-500" />
+                                    <button title="Approve" disabled={cls.status === "approved" ? true : false} onClick={() => handleApprove(cls._id)}>
+                                        <AiFillCheckCircle
+                                            className={`text-2xl ${cls.status === "approved"
+                                                ? "text-slate-300"
+                                                : "text-green-400 hover:text-green-500"
+                                                }`}
+                                        />
                                     </button>
-                                    <button onClick={() => handleDeny(cls._id)}>
-                                        <TiDelete className="text-3xl text-rose-400 hover:text-rose-500" />
+                                    <button title="Deny" disabled={cls.status === "denied" ? true : false} onClick={() => handleDeny(cls._id)}>
+                                        <TiDelete
+                                            className={`text-3xl ${cls.status === "denied"
+                                                ? "text-slate-300"
+                                                : "text-rose-400 hover:text-rose-500"
+                                                }`}
+                                        />
                                     </button>
-                                    <button onClick={() => handleOpenModal(cls._id)}>
+                                    <button title="Send Feedback" onClick={() => handleOpenModal(cls._id)}>
                                         <FcFeedback className="text-2xl" />
                                     </button>
                                     {isModalOpen[cls._id] && (
@@ -137,6 +156,7 @@ const AllClasses = () => {
                                             <form onSubmit={(event) => handleSendFeedback(cls._id, event)} className="bg-white p-8 rounded-lg w-96">
                                                 <h2 className="text-xl mb-4">Feedback</h2>
                                                 <div className="flex flex-col space-y-4">
+                                                    <label htmlFor="feedback-input"><span className="text-red-400 font-semibold">Deny</span> and leave feedback</label>
                                                     <input
                                                         name="feedback"
                                                         type="text"
@@ -159,9 +179,9 @@ const AllClasses = () => {
                                         </div>
                                     )}
                                 </td>
-                            </tr>)
+                            </motion.tr>)
                         }
-                    </tbody>
+                    </motion.tbody>
                 </table>
             </div>
         </div>

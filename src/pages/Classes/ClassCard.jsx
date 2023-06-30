@@ -14,23 +14,36 @@ const ClassCard = ({ cls }) => {
         console.log(cls);
         if (user && user.email) {
             const cartItem = { courseName: name, thumbnail: img, instructorName: instructor, price, email: user.email }
-            fetch('http://localhost:5000/carts', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(cartItem)
+            Swal.fire({
+                title: `Add ${name} to cart?`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Add to Cart'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch('http://localhost:5000/carts', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(cartItem)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire(
+                                    'Good job!',
+                                    'Course is added to cart',
+                                    'success'
+                                )
+                            }
+                        })
+                }
             })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        Swal.fire(
-                            'Good job!',
-                            'Course is added to cart',
-                            'success'
-                        )
-                    }
-                })
+
+
         }
         else {
             Swal.fire({
