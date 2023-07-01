@@ -112,7 +112,7 @@ const SignUp = () => {
                                 className="input focus:outline-0 border-violet-400 focus:border-2"
                                 {...register("confirmPassword", {
                                     required: true,
-                                    validate: value => value === password || "Passwords did not match"
+                                    validate: value => value === password || "Password did not match"
                                 })}
                             />
                             {errors.confirmPassword && <small className='text-rose-400'>{errors.confirmPassword?.message || "Confirm password"}</small>}

@@ -19,8 +19,11 @@ const NavBar = () => {
         {/* <li><Link to={isAdmin ? "/dashboard/admin-home" : (isInstructor ? "/dashboard/instructor-home" :
             "/dashboard/user-home"
         )}>Dashboard</Link></li> */}
-        {!user && <li><Link to="/login">Login</Link></li>}
-        <li>{user?.email}</li>
+        {!user && <>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/signup">Register</Link></li>
+        </>}
+        {/* <li>{user?.email}</li> */}
     </>
 
     const handleSignOut = () => {

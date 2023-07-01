@@ -1,12 +1,12 @@
-import { GrFormAdd } from 'react-icons/gr';
+import { BiSolidCartAdd } from 'react-icons/bi';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const ClassCard = ({ cls }) => {
     const { user } = useAuth();
-    const { name, img, instructor, availableSeats, price } = cls;
-    const cardClass = `card w-96 ${availableSeats === 0 ? 'bg-red-300' : 'bg-base-100'} shadow-xl`;
+    const { name, img, instructor, availableSeats, price, students } = cls;
+    const cardClass = `card w-96 ${availableSeats === 0 ? 'bg-rose-300' : 'bg-base-100'} shadow-xl`;
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -66,14 +66,19 @@ const ClassCard = ({ cls }) => {
             <div className="card-body">
                 <h2 className="card-title">
                     {name}
-                    <div className="badge badge-primary">by {instructor}</div>
+                    <div className="badge badge-primary badge-outline">by {instructor}</div>
                 </h2>
                 <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Available: {availableSeats}</div>
-                    <div className="badge badge-outline font-bold">${price}</div>
+                    <div className="badge badge-outline"><b className="mr-1">{availableSeats}</b> available seats</div>
+                    <div className="badge badge-outline"><b className="mr-1">{students}</b> students</div>
+                    <div className="badge badge-outline">${price}</div>
                 </div>
                 <div>
-                    <button onClick={() => handleAddToCart(cls)} className="btn btn-xs btn-warning" disabled={availableSeats === 0 && true}><GrFormAdd className='text-lg' />Select Course</button>
+                    <button onClick={() => handleAddToCart(cls)}
+                        className="btn btn-xs btn-accent"
+                        disabled={availableSeats === 0 && true}>
+                        <BiSolidCartAdd className='text-lg' />Add Course
+                    </button>
                 </div>
             </div>
         </div>

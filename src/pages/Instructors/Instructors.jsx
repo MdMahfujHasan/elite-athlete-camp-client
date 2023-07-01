@@ -1,8 +1,8 @@
 import { FiUsers } from "react-icons/fi";
 import SectionTitle from "../../components/SectionTitle";
 import useInstructors from "../../hooks/useInstructors";
-import { AiOutlinePlus } from "react-icons/ai";
 import { FcSportsMode } from 'react-icons/fc';
+import { FaUsers } from 'react-icons/fa';
 
 const Instructors = () => {
     const [instructors] = useInstructors();
@@ -15,16 +15,21 @@ const Instructors = () => {
                         <figure><img src={instructor.img} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="text-3xl font-thin">{instructor.name}</h2>
-                            <p className="flex items-center gap-1 font-semibold"><FiUsers /> {instructor.students}</p>
-                            <p><b>Email:</b> {instructor.email}</p>
-                            {/* TODO: ADD DYNAMIC DATA */}
+                            <div className="flex">
+                                <p><b>Email:</b> {instructor.email}</p>
+                                <p className="flex items-center gap-1 font-semibold"><FiUsers /> {instructor.students}</p>
+                            </div>
                             <div className="space-x-1">
-                                <p className="badge badge-outline gap-1"><FcSportsMode />35 classes</p>
-                                <p className="badge badge-info gap-1">Swimming</p>
-                                <p className="badge badge-info gap-1">Badminton</p>
+                                <p className="badge badge-outline gap-1">
+                                    <FcSportsMode />
+                                    <b>{instructor.classesTaken}</b> classes taken
+                                </p>
+                                {instructor.classes.map(cls => (
+                                    <p className="badge badge-primary badge-outline text-white" key={cls}>{cls}</p>
+                                ))}
                             </div>
                             <div className="card-actions mt-4 justify-end">
-                                <button className="btn btn-xs border border-slate-400 hover:border-slate-500"><AiOutlinePlus />See Classes</button>
+                                <button className="btn btn-xs btn-accent"><FaUsers />See Classes</button>
                             </div>
                         </div>
                     </div>)

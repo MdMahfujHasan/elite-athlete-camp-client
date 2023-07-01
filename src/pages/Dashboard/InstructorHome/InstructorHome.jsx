@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import SectionTitle from '../../../components/SectionTitle';
 
 const InstructorHome = () => {
     const { user } = useAuth();
@@ -28,100 +29,106 @@ const InstructorHome = () => {
             })
     }
     return (
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 pb-4">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+        <>
+            <div className="flex flex-col justify-center items-center">
+                <SectionTitle title="New Class" heading="Add a Class"></SectionTitle>
+                <div className="card w-full max-w-md shadow-2xl bg-base-100 pb-4">
 
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Class Name</span>
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="Class Name"
-                        className="input focus:outline-0 border-violet-400 focus:border-2"
-                        {...register("name", { required: true, maxLength: 120 })}
-                    />
-                    {errors.name?.type === "required" && <small className='text-rose-400'>Name is required</small>}
-                    {errors.name?.type === "maxLength" && <small className='text-rose-400'>Max length exceeded</small>}
-                </div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Class Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Class Name"
+                                className="input focus:outline-0 border-violet-400 focus:border-2"
+                                {...register("name", { required: true, maxLength: 120 })}
+                            />
+                            {errors.name?.type === "required" && <small className='text-rose-400'>Name is required</small>}
+                            {errors.name?.type === "maxLength" && <small className='text-rose-400'>Max length exceeded</small>}
+                        </div>
 
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Class Image</span>
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="Class Image URL"
-                        className="input focus:outline-0 border-violet-400 focus:border-2"
-                        {...register("image", { required: true })}
-                    />
-                    {errors.image && <small className='text-rose-400'>Image is required</small>}
-                </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Class Image</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Class Image URL"
+                                className="input focus:outline-0 border-violet-400 focus:border-2"
+                                {...register("image", { required: true })}
+                            />
+                            {errors.image && <small className='text-rose-400'>Image is required</small>}
+                        </div>
 
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Instructor Name</span>
-                    </label>
-                    <input
-                        type="text"
-                        defaultValue={user?.displayName}
-                        readOnly
-                        className="input focus:outline-0 border-violet-400 text-slate-700"
-                        {...register("instructorName", { required: true, maxLength: 120 })}
-                    />
-                    {errors.instructorName?.type === "required" && <small className='text-rose-400'>Instructor name is required</small>}
-                    {errors.instructorName?.type === "maxLength" && <small className='text-rose-400'>Max name length exceeded</small>}
-                </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Instructor Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                defaultValue={user?.displayName}
+                                readOnly
+                                className="input focus:outline-0 border-violet-400 text-slate-700"
+                                {...register("instructorName", { required: true, maxLength: 120 })}
+                            />
+                            {errors.instructorName?.type === "required" && <small className='text-rose-400'>Instructor name is required</small>}
+                            {errors.instructorName?.type === "maxLength" && <small className='text-rose-400'>Max name length exceeded</small>}
+                        </div>
 
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Instructor Email</span>
-                    </label>
-                    <input
-                        type="email"
-                        defaultValue={user?.email}
-                        readOnly
-                        className="input focus:outline-0 border-violet-400 appearance-none text-slate-700"
-                        {...register("email", { required: true })}
-                    />
-                    {errors.email && <small className="text-rose-400">Email is required</small>}
-                </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Instructor Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                defaultValue={user?.email}
+                                readOnly
+                                className="input focus:outline-0 border-violet-400 appearance-none text-slate-700"
+                                {...register("email", { required: true })}
+                            />
+                            {errors.email && <small className="text-rose-400">Email is required</small>}
+                        </div>
 
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Available Seats</span>
-                    </label>
-                    <input
-                        type="number"
-                        placeholder="Available Seats"
-                        className="input focus:outline-0 border-violet-400 appearance-none"
-                        {...register("seats", { required: true })}
-                    />
-                    {errors.seats && <small className="text-rose-400">Seats is required</small>}
-                </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Available Seats</span>
+                            </label>
+                            <input
+                                type="number"
+                                placeholder="Available Seats"
+                                className="input focus:outline-0 border-violet-400 appearance-none"
+                                {...register("seats", { required: true })}
+                            />
+                            {errors.seats && <small className="text-rose-400">Seats is required</small>}
+                        </div>
 
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Price</span>
-                    </label>
-                    <input
-                        type="number"
-                        placeholder="$ Price"
-                        className="input focus:outline-0 border-violet-400 appearance-none"
-                        {...register("price", { required: true })}
-                    />
-                    {errors.price && <small className="text-rose-400">Price is required</small>}
-                </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Price</span>
+                            </label>
+                            <input
+                                type="number"
+                                placeholder="$ Price"
+                                className="input focus:outline-0 border-violet-400 appearance-none"
+                                {...register("price", { required: true })}
+                            />
+                            {errors.price && <small className="text-rose-400">Price is required</small>}
+                        </div>
 
-                <div className="form-control mt-6">
-                    <input
-                        type="submit"
-                        value="Add Class"
-                        className='btn bg-violet-400 hover:bg-violet-500 text-white'
-                    />
+                        <div className="form-control mt-6">
+                            <input
+                                type="submit"
+                                value="Add Class"
+                                className='btn bg-violet-400 hover:bg-violet-500 text-white'
+                            />
+                        </div>
+                    </form >
+
                 </div>
-            </form >
-        </div >
+            </div>
+        </>
     );
 };
 

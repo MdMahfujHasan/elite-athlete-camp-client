@@ -3,25 +3,31 @@ import { Link, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useMyClasses from "../hooks/useMyClasses";
 import useAllClasses from "../hooks/useAllClasses";
+import usePaymentHistory from "../hooks/usePaymentHistory";
+import { FcHome } from 'react-icons/fc';
 // import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
     const [cart] = useCart();
     const [myClasses] = useMyClasses();
     const [allClasses] = useAllClasses();
+    const [paymentHistory] = usePaymentHistory();
     // const [isAdmin] = useAdmin();
     // const [isInstructor] = useInstructor();
 
     const navInfo = <>
-        <li className="bg-violet-200 rounded"><Link to="/">EAC</Link></li>
+        <li><Link to="/"><FcHome className="text-2xl" /></Link></li>
         <li><Link to="/dashboard">Home</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
         <li><Link to="/dashboard/my-cart">My Cart<span className="badge badge-warning badge-sm text-white">{cart.length}</span></Link></li>
-        <li><Link to="/dashboard/payment-history">Payment History</Link></li>
+        <li><Link to="/dashboard/payment-history">Payment History<span className="badge badge-error badge-sm text-white">{paymentHistory.length}</span></Link></li>
+        <li><Link to="/dashboard/enrolled-classes">Enrolled Classes</Link></li>
         <li><Link to="/dashboard/user-home">User Home</Link></li>
         <li><Link to="/dashboard/instructor-home">Instructor Home</Link></li>
         <li><Link to="/dashboard/admin-home">Admin Home</Link></li>
         <li><Link to="/dashboard/my-classes">My Classes<span className="badge badge-info badge-sm text-white">{myClasses.length}</span></Link></li>
         <li><Link to="/dashboard/all-classes">Manage Classes<span className="badge badge-success badge-sm text-white">{allClasses.length}</span></Link></li>
+        <li><Link to="/dashboard/all-users">Manage Users</Link></li>
     </>
 
     return (

@@ -1,10 +1,15 @@
 import { RiDeleteBin2Fill } from 'react-icons/ri';
+import { FaEdit } from 'react-icons/fa';
 import useMyClasses from "../../../hooks/useMyClasses";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 
 const MyClasses = () => {
     const [myClasses, refetch] = useMyClasses();
+
+    const handleUpdate = id => {
+
+    }
 
     const handleDelete = id => {
         Swal.fire({
@@ -46,7 +51,7 @@ const MyClasses = () => {
                         <th>Seats</th>
                         <th>Enrolled</th>
                         <th>Feedback</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <motion.tbody
@@ -89,6 +94,7 @@ const MyClasses = () => {
                             <td>{myClass.students}</td>
                             <td>{myClass.status === "denied" && myClass.feedback ? myClass.feedback : null}</td>
                             <td>
+                                <button onClick={() => handleUpdate(myClass._id)}><FaEdit className="text-2xl text-blue-400 hover:text-blue-500 mr-2" /></button>
                                 <button onClick={() => handleDelete(myClass._id)}><RiDeleteBin2Fill className="text-2xl text-red-400 hover:text-red-500" /></button>
                             </td>
                         </motion.tr>)

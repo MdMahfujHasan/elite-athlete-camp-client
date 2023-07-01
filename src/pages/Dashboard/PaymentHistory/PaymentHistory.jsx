@@ -11,7 +11,7 @@ const PaymentHistory = () => {
     return (
         <div>
             <div className="overflow-x-auto">
-                <table className="table table-xs">
+                <table className="table table-zebra">
                     <thead>
                         <tr>
                             <th></th>
@@ -48,9 +48,9 @@ const PaymentHistory = () => {
                         <tr>
                             <th></th>
                             <th></th>
-                            <th></th>
-                            <th>Total Price: ${totalPrice}</th>
-                            <th>Total Quantity: {totalQuantity}</th>
+                            <th className="text-sm"><span className="badge badge-md badge-primary badge-outline">Summery</span></th>
+                            <th><span className="badge badge-success badge-md badge-outline">Total Price: ${totalPrice}</span></th>
+                            <th><span className="badge badge-success badge-md badge-outline">Total Quantity: {totalQuantity}</span></th>
                             <th></th>
                             <th></th>
                         </tr>
