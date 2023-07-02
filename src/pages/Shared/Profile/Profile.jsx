@@ -1,21 +1,14 @@
-import { useEffect, useState } from "react";
-import useAuth from "../../../hooks/useAuth";
 import useTheme from "../../../hooks/useTheme";
+import useProfile from "../../../hooks/useProfile";
 
 const Profile = () => {
-    const { user } = useAuth();
     const { darkTheme } = useTheme();
-    const [userDetails, setUserDetails] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:5000/users?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setUserDetails(data))
-    }, [user])
+    const [userDetails] = useProfile();
 
-    const profileClass = `p-8 ${darkTheme && "bg-violet-950 text-slate-300"}`
+    const profileClass = `flex justify-around p-8 ${darkTheme && "bg-violet-950 text-slate-300"}`
     return (
         <div className={profileClass}>
-            <div className="w-1/3 mx-auto">
+            <div className="">
                 {
                     userDetails.map(userDetail => <div key={userDetail._id}>
                         <div className="avatar">
@@ -23,7 +16,7 @@ const Profile = () => {
                                 <img src={userDetail.photo} />
                             </div>
                         </div>
-                        <p><b>Role:</b> <span className={`badge badge-md text-white ${userDetail.role === 'admin' ? 'badge-primary' : userDetail.role === 'instructor' ? 'badge-success' : 'badge-outline'}`}>{userDetail.role ? userDetail.role : "user"}</span></p>
+                        <p><b>Role:</b> <span className={`badge badge-md text-white ${userDetail.role === 'admin' ? 'badge-primary' : userDetail.role === 'instructor' ? 'badge-success' : 'badge-info'}`}>{userDetail.role ? userDetail.role : "student"}</span></p>
                         <h3><b>Full Name:</b> {userDetail.name}</h3>
                         <p><b>Email Address:</b> {userDetail.email}</p>
                         <p><b>Phone:</b> {userDetail.phone}</p>
@@ -31,6 +24,9 @@ const Profile = () => {
                         <p><b>Gender:</b> {userDetail.gender}</p>
                     </div>)
                 }
+            </div>
+            <div>
+                <button className="btn btn-xs btn-success">Edit</button>
             </div>
         </div>
     );

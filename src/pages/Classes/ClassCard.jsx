@@ -2,6 +2,7 @@ import { BiSolidCartAdd } from 'react-icons/bi';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useProfile from '../../hooks/useProfile';
 
 const ClassCard = ({ cls }) => {
     const { user } = useAuth();
@@ -9,6 +10,7 @@ const ClassCard = ({ cls }) => {
     const cardClass = `card w-96 ${availableSeats === 0 ? 'bg-rose-300' : 'bg-base-100'} shadow-xl`;
     const navigate = useNavigate();
     const location = useLocation();
+    const [userDetails] = useProfile()
 
     const handleAddToCart = cls => {
         console.log(cls);
@@ -76,7 +78,9 @@ const ClassCard = ({ cls }) => {
                 <div>
                     <button onClick={() => handleAddToCart(cls)}
                         className="btn btn-xs btn-accent"
-                        disabled={availableSeats === 0 && true}>
+                        // disabled={availableSeats === 0 && true}
+                        disabled={(availableSeats === 0 && true) || userDetails[0].role === "admin" || userDetails[0].role === "instructor"}
+                    >
                         <BiSolidCartAdd className='text-lg' />Add Course
                     </button>
                 </div>

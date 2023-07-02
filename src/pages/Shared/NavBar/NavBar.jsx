@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
@@ -6,6 +6,7 @@ import useCart from "../../../hooks/useCart";
 // import useInstructor from "../../../hooks/useInstructor";
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 import useTheme from "../../../hooks/useTheme";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
@@ -13,6 +14,7 @@ const NavBar = () => {
     // const [isAdmin] = useAdmin();
     // const [isInstructor] = useInstructor();
     const { darkTheme, setDarkTheme } = useTheme();
+    const navigate = useNavigate();
 
     const badgeClass = `badge badge-sm ms-1 ${!darkTheme && "badge-neutral"}`;
     const navInfo = <>
@@ -31,8 +33,20 @@ const NavBar = () => {
     </>
 
     const handleSignOut = () => {
-        logOut()
-    }
+        Swal.fire({
+            title: 'Confirm Logout',
+            text: 'Are you sure you want to logout?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Logout',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                navigate("/login");
+            }
+        });
+    };
 
     const navbarClass = `navbar ${darkTheme ? 'bg-indigo-950 text-white' : 'bg-violet-300'} flex justify-around`;
     const profileClass = `mt-3 space-y-2 shadow menu menu-sm dropdown-content p-4 rounded-box w-52 z-10 ${darkTheme ? 'bg-indigo-950' : 'bg-base-100'}`;
@@ -63,7 +77,7 @@ const NavBar = () => {
                 <ul tabIndex={0} className={profileClass}>
                     <Link to="/profile">Profile</Link>
                     <Link to="/settings">Settings</Link>
-                    <Link onClick={handleSignOut} to="/login">Logout</Link>
+                    <Link onClick={handleSignOut}>Logout</Link>
                 </ul>
             </div>
         </nav>
