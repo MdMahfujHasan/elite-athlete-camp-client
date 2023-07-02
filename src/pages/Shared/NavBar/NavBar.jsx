@@ -4,46 +4,52 @@ import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
 // import useAdmin from "../../../hooks/useAdmin";
 // import useInstructor from "../../../hooks/useInstructor";
+import { BsSunFill, BsMoonFill } from 'react-icons/bs';
+import useTheme from "../../../hooks/useTheme";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
     const [cart] = useCart();
     // const [isAdmin] = useAdmin();
     // const [isInstructor] = useInstructor();
+    const { darkTheme, setDarkTheme } = useTheme();
 
+    const badgeClass = `badge badge-sm ${!darkTheme && "badge-neutral"}`;
     const navInfo = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/instructors">Instructors</Link></li>
-        <li><Link to="/classes">Classes</Link></li>
-        {user && <li><Link to="/dashboard/my-cart">Dashboard<span className="badge badge-sm badge-neutral">{cart.length}</span></Link></li>}
+        <Link to="/">Home</Link>
+        <Link to="/instructors">Instructors</Link>
+        <Link to="/classes">Classes</Link>
+        {user && <Link to="/dashboard/my-cart">Dashboard<span className={badgeClass}>{cart.length}</span></Link>}
         {/* <li><Link to={isAdmin ? "/dashboard/admin-home" : (isInstructor ? "/dashboard/instructor-home" :
             "/dashboard/user-home"
         )}>Dashboard</Link></li> */}
         {!user && <>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/signup">Register</Link></li>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Register</Link>
         </>}
-        {/* <li>{user?.email}</li> */}
+        <button onClick={() => setDarkTheme(!darkTheme)}>{darkTheme ? <BsMoonFill className="text-lg" /> : <BsSunFill className="text-lg" />}</button>
     </>
 
     const handleSignOut = () => {
         logOut()
     }
+
+    const navbarClass = `navbar ${darkTheme ? 'bg-indigo-950 text-white' : 'bg-violet-300'} flex justify-around`;
     return (
-        <nav className="navbar bg-violet-300 flex justify-around">
+        <nav className={navbarClass}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <AiOutlineMenuUnfold className="text-xl" />
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-base-300 z-10">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-base-300 z-10 space-x-4">
                         {navInfo}
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl">Elite Athlete Camp</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 z-10">
+                <ul className="menu menu-horizontal px-1 z-10 space-x-8">
                     {navInfo}
                 </ul>
             </div>

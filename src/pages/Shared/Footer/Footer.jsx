@@ -1,11 +1,14 @@
 import { format } from 'date-fns';
 import { AiFillFacebook, AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
+import useTheme from '../../../hooks/useTheme';
 
 const Footer = () => {
     const currentYear = format(new Date(), 'yyyy');
+    const { darkTheme } = useTheme();
+    const footerClass = `footer footer-center p-10 text-primary-content ${darkTheme ? 'bg-indigo-950' : 'bg-violet-100 text-slate-700'}`;
 
     return (
-        <footer className="footer footer-center p-10 bg-violet-950 text-primary-content">
+        <footer className={footerClass}>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="50" fill="black" />
