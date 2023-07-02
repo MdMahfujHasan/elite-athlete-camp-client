@@ -17,8 +17,9 @@ import AllClasses from "../pages/Dashboard/AllClasses/AllClasses";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses";
-import AdminRoute from "./AdminRoute";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
+import Profile from "../pages/Shared/Profile/Profile";
+import Settings from "../pages/Shared/Settings/Settings";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,17 @@ const router = createBrowserRouter([
             {
                 path: "classes",
                 element: <Classes></Classes>
+            },
+            {
+                path: "profile",
+                element: <Profile></Profile>,
+                children: [
+
+                ]
+            },
+            {
+                path: "settings",
+                element: <Settings></Settings>
             }
         ]
     },
@@ -73,7 +85,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "all-classes",
-                element: <AdminRoute><AllClasses></AllClasses></AdminRoute>
+                element: <AllClasses></AllClasses>
             },
             {
                 path: "payment",

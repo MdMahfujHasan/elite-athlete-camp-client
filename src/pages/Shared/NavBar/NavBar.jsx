@@ -14,7 +14,7 @@ const NavBar = () => {
     // const [isInstructor] = useInstructor();
     const { darkTheme, setDarkTheme } = useTheme();
 
-    const badgeClass = `badge badge-sm ${!darkTheme && "badge-neutral"}`;
+    const badgeClass = `badge badge-sm ms-1 ${!darkTheme && "badge-neutral"}`;
     const navInfo = <>
         <Link to="/">Home</Link>
         <Link to="/instructors">Instructors</Link>
@@ -35,6 +35,7 @@ const NavBar = () => {
     }
 
     const navbarClass = `navbar ${darkTheme ? 'bg-indigo-950 text-white' : 'bg-violet-300'} flex justify-around`;
+    const profileClass = `mt-3 space-y-2 shadow menu menu-sm dropdown-content p-4 rounded-box w-52 z-10 ${darkTheme ? 'bg-indigo-950' : 'bg-base-100'}`;
     return (
         <nav className={navbarClass}>
             <div className="navbar-start">
@@ -59,10 +60,10 @@ const NavBar = () => {
                         <img src={user.photoURL} />
                     </div>
                 </label>}
-                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 z-10">
-                    <li><a>Profile</a></li>
-                    <li><a>Settings</a></li>
-                    <li><button onClick={handleSignOut}><Link to="/login">Logout</Link></button></li>
+                <ul tabIndex={0} className={profileClass}>
+                    <Link to="/profile">Profile</Link>
+                    <Link to="/settings">Settings</Link>
+                    <Link onClick={handleSignOut} to="/login">Logout</Link>
                 </ul>
             </div>
         </nav>
