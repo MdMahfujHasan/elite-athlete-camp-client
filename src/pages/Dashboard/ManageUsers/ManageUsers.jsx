@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import { GrUserAdmin } from 'react-icons/gr';
 import { FaUser, FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
 
 const ManageUsers = () => {
@@ -132,18 +131,18 @@ const ManageUsers = () => {
                                 <td>{user.email}</td>
                                 <td>
                                     {user.role === "admin" ? <>
-                                        <span className="badge badge-primary"><FaUserShield className="mr-1 text-base" />Admin</span>
-                                        <button className="btn btn-xs mx-2 btn-success text-white" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
+                                        <span className="badge badge-info"><FaUserShield className="mr-1 text-base" />Admin</span>
+                                        <button className="btn btn-xs mx-2" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
                                         <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
                                     </> : user.role === "instructor" ? <>
-                                        <span className="badge badge-success text-white"><FaChalkboardTeacher className="mr-1 text-base" />Instructor</span>
-                                        <button className="btn btn-xs mx-2 btn-primary" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
+                                        <span className="badge badge-success"><FaChalkboardTeacher className="mr-1 text-base" />Instructor</span>
+                                        <button className="btn btn-xs mx-2" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
                                         <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
                                     </> :
                                         <div className="space-x-2">
-                                            <span className="badge"><FaUser className="mr-1" />User</span>
-                                            <button className="btn btn-xs btn-primary" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
-                                            <button className="btn btn-xs btn-success text-white" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
+                                            <span className="badge badge-outline badge-sm"><FaUser className="mr-1 text-xs" />User</span>
+                                            <button className="btn btn-xs" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
+                                            <button className="btn btn-xs" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
                                         </div>
                                     }
                                 </td>

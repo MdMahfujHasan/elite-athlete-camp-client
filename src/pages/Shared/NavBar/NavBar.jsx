@@ -36,14 +36,14 @@ const NavBar = () => {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <AiOutlineMenuUnfold className="text-xl" />
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-base-300">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-base-300 z-10">
                         {navInfo}
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl">Elite Athlete Camp</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 z-10">
                     {navInfo}
                 </ul>
             </div>
