@@ -3,15 +3,21 @@ import SectionTitle from "../../components/SectionTitle";
 import useInstructors from "../../hooks/useInstructors";
 import { FcSportsMode } from 'react-icons/fc';
 import { FaUsers } from 'react-icons/fa';
+import useTheme from "../../hooks/useTheme";
+import { Link } from "react-router-dom";
 
 const Instructors = () => {
     const [instructors] = useInstructors();
+    const { darkTheme } = useTheme();
+    const PopularClassesClass = `grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-items-center p-8 gap-8 ${darkTheme && 'bg-slate-900'}`;
+    const PopularClassesCardClass = `card w-96 shadow-xl ${darkTheme ? 'bg-indigo-950 text-white' : "bg-base-100"}`;
+
     return (
         <>
             <SectionTitle title="Every Classes" heading="All Instructors"></SectionTitle>
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-items-center p-8 gap-8">
+            <div className={PopularClassesClass}>
                 {
-                    instructors.map(instructor => <div key={instructor._id} className="card w-96 bg-base-100 shadow-xl">
+                    instructors.map(instructor => <div key={instructor._id} className={PopularClassesCardClass}>
                         <figure><img src={instructor.img} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="text-3xl font-thin">{instructor.name}</h2>
@@ -25,11 +31,13 @@ const Instructors = () => {
                                     <b>{instructor.classesTaken}</b> classes taken
                                 </p>
                                 {instructor.classes.map(cls => (
-                                    <p className="badge badge-primary badge-outline text-white" key={cls}>{cls}</p>
+                                    <p className={`badge badge-outline text-white ${darkTheme ? "badge-info" : "badge-primary"}`} key={cls}>{cls}</p>
                                 ))}
                             </div>
                             <div className="card-actions mt-4 justify-end">
-                                <button className="btn btn-xs btn-accent"><FaUsers />See Classes</button>
+                                <Link to={`/instructors/${instructor._id}`}>
+                                    <button className="btn btn-xs btn-accent"><FaUsers />See Classes</button>
+                                </Link>
                             </div>
                         </div>
                     </div>)

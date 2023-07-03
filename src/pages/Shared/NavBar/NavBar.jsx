@@ -48,7 +48,7 @@ const NavBar = () => {
         });
     };
 
-    const navbarClass = `navbar ${darkTheme ? 'bg-indigo-950 text-white' : 'bg-violet-300'} flex justify-around`;
+    const navbarClass = `navbar ${darkTheme ? 'bg-violet-950 text-white' : 'bg-violet-300'} flex justify-around`;
     const profileClass = `mt-3 space-y-2 shadow menu menu-sm dropdown-content p-4 rounded-box w-52 z-10 ${darkTheme ? 'bg-indigo-950' : 'bg-base-100'}`;
     return (
         <nav className={navbarClass}>

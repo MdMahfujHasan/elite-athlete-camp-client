@@ -3,14 +3,18 @@ import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useProfile from '../../hooks/useProfile';
+import useTheme from '../../hooks/useTheme';
 
 const ClassCard = ({ cls }) => {
     const { user } = useAuth();
     const { name, img, instructor, availableSeats, price, students } = cls;
-    const cardClass = `card w-96 ${availableSeats === 0 ? 'bg-rose-300' : 'bg-base-100'} shadow-xl`;
     const navigate = useNavigate();
     const location = useLocation();
-    const [userDetails] = useProfile()
+    const [userDetails] = useProfile();
+    const { darkTheme } = useTheme();
+
+    const cardClass = `card rounded w-96 ${availableSeats === 0 ? 'bg-red-400 text-slate-600' : 'bg-base-100'} shadow-xl ${darkTheme && 'bg-slate-900'}}`;
+    const PopularClassesCardClass = `card-body ${darkTheme && 'bg-slate-900 text-white'}`;
 
     const handleAddToCart = cls => {
         console.log(cls);
@@ -64,11 +68,11 @@ const ClassCard = ({ cls }) => {
     }
     return (
         <div className={cardClass}>
-            <figure><img src={img} alt="Shoes" /></figure>
-            <div className="card-body">
+            <figure><img src={img} /></figure>
+            <div className={PopularClassesCardClass}>
                 <h2 className="card-title">
                     {name}
-                    <div className="badge badge-primary badge-outline">by {instructor}</div>
+                    <div className={`badge badge-outline ${darkTheme ? "badge-info" : "badge-primary"}`}>by {instructor}</div>
                 </h2>
                 <div className="card-actions justify-end">
                     <div className="badge badge-outline"><b className="mr-1">{availableSeats}</b> available seats</div>
@@ -78,8 +82,7 @@ const ClassCard = ({ cls }) => {
                 <div>
                     <button onClick={() => handleAddToCart(cls)}
                         className="btn btn-xs btn-accent"
-                        // disabled={availableSeats === 0 && true}
-                        disabled={(availableSeats === 0 && true) || userDetails[0].role === "admin" || userDetails[0].role === "instructor"}
+                        disabled={(availableSeats === 0 && true) || userDetails[0]?.role === "admin" || userDetails[0]?.role === "instructor"}
                     >
                         <BiSolidCartAdd className='text-lg' />Add Course
                     </button>

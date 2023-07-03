@@ -20,6 +20,7 @@ import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses"
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import Profile from "../pages/Shared/Profile/Profile";
 import Settings from "../pages/Shared/Settings/Settings";
+import InstructorClasses from "../pages/Instructors/InstructorClasses";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: "instructors",
                 element: <Instructors></Instructors>
+            },
+            {
+                path: "instructors/:id",
+                element: <InstructorClasses></InstructorClasses>,
+                loader: ({ params }) => fetch(`http://localhost:5000/instructors/${params.id}`)
             },
             {
                 path: "classes",
