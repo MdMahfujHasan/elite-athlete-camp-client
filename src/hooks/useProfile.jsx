@@ -5,7 +5,7 @@ import useAxiosSecure from "./useAxiosSecure";
 const useProfile = () => {
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { data: userDetails = [] } = useQuery({
+    const { data: userDetails = [], refetch } = useQuery({
         queryKey: ['userDetails', user?.email],
         enabled: !loading,
         queryFn: async () => {
@@ -13,7 +13,7 @@ const useProfile = () => {
             return res.data;
         }
     })
-    return [userDetails];
+    return [userDetails, refetch];
 };
 
 export default useProfile;

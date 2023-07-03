@@ -123,10 +123,10 @@ const SignUp = () => {
                                 <span className="label-text">Phone</span>
                             </label>
                             <input
-                                type="tel"
+                                type="number"
                                 inputMode="numeric"
                                 placeholder="Phone Number"
-                                className="input focus:outline-0 border-violet-400 focus:border-2 appearance-none"
+                                className="input focus:outline-0 border-violet-400 focus:border-2 appearance-none number-input"
                                 {...register("phoneNumber", {
                                     required: true,
                                     minLength: 7,
