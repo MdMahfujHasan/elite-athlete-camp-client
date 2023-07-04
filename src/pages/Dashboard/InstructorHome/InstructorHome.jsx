@@ -19,13 +19,15 @@ const InstructorHome = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                Swal.fire(
-                    'Great!',
-                    "You've added a new class",
-                    'success'
-                )
-                reset();
+                console.log(data)
+                if (data) {
+                    reset();
+                    Swal.fire(
+                        'Great!',
+                        "You've added a new class",
+                        'success'
+                    )
+                }
             })
     }
     return (
@@ -98,10 +100,14 @@ const InstructorHome = () => {
                             <input
                                 type="number"
                                 placeholder="Available Seats"
-                                className="input focus:outline-0 border-violet-400 appearance-none"
-                                {...register("seats", { required: true })}
+                                className="input focus:outline-0 border-violet-400 appearance-none number-input"
+                                {...register("seats", {
+                                    required: true,
+                                    min: { value: 1, message: 'Seats must be greater than or equal to 1' }
+                                })}
                             />
-                            {errors.seats && <small className="text-rose-400">Seats is required</small>}
+                            {errors.seats?.type === "required" && <small className="text-rose-400">Seats is required</small>}
+                            {errors.seats?.type === "min" && <small className="text-rose-400">{errors.seats.message}</small>}
                         </div>
 
                         <div className="form-control">
@@ -111,10 +117,14 @@ const InstructorHome = () => {
                             <input
                                 type="number"
                                 placeholder="$ Price"
-                                className="input focus:outline-0 border-violet-400 appearance-none"
-                                {...register("price", { required: true })}
+                                className="input focus:outline-0 border-violet-400 appearance-none number-input"
+                                {...register("price", {
+                                    required: true,
+                                    min: { value: 1, message: 'Price must be greater than or equal to 1' }
+                                })}
                             />
-                            {errors.price && <small className="text-rose-400">Price is required</small>}
+                            {errors.price?.type === "required" && <small className="text-rose-400">Price is required</small>}
+                            {errors.price?.type === "min" && <small className="text-rose-400">{errors.price.message}</small>}
                         </div>
 
                         <div className="form-control mt-6">

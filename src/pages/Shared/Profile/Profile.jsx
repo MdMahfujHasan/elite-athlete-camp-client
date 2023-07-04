@@ -113,10 +113,11 @@ const Profile = () => {
                             <select
                                 id="gender"
                                 {...register('gender', { required: true })}
-                                className="select rounded-md w-24 focus:outline-0 border border-violet-400 text-slate-700"
+                                className="select rounded-md w-28 focus:outline-0 border border-violet-400 text-slate-700"
                             >
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
+                                <option value="others">Others</option>
                             </select>
                             {errors.gender && <span className="text-red-500">This field is required</span>}
                         </div>

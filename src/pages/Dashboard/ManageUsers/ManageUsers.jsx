@@ -124,7 +124,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => <tr key={user._id} className={`${user.role === "admin" ? "bg-blue-200" : user.role === "instructor" ? "bg-green-100" : "bg-slate-100"
+                            users.map((user, index) => <tr key={user._id} className={`${user.role === "admin" ? "bg-blue-200" : user.role === "instructor" ? "bg-green-200" : "bg-slate-200"
                                 }`}>
                                 <td>{index + 1}</td>
                                 <td>{user.name}</td>

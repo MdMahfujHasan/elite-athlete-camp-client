@@ -22,9 +22,9 @@ const Dashboard = () => {
 
     const navInfo = <>
         <Link to="/"><FcHome className="text-2xl" /></Link>
-        <Link to="/dashboard">Home</Link>
+        {/* <Link to="/dashboard">Home</Link>
         <Link to="/classes">Classes</Link>
-        <Link to="/instructors">Instructors</Link>
+        <Link to="/instructors">Instructors</Link> */}
         {
             isAdmin ?
                 <>
