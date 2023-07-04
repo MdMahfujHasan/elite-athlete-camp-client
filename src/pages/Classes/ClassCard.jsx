@@ -29,7 +29,7 @@ const ClassCard = ({ cls }) => {
                 confirmButtonText: 'Add to Cart'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    fetch('http://localhost:5000/carts', {
+                    fetch('https://elite-athlete-camp-server.vercel.app/carts', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

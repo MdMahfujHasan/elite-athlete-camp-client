@@ -15,7 +15,7 @@ const Profile = () => {
     const profileClass = `flex flex-col md:flex-row justify-around gap-4 p-8 ${darkTheme && "bg-indigo-950 text-slate-300"}`
 
     const onSubmit = (updateUser) => {
-        fetch(`http://localhost:5000/users/${user?.email}`, {
+        fetch(`https://elite-athlete-camp-server.vercel.app/users/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

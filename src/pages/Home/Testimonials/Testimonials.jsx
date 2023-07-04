@@ -11,7 +11,7 @@ const Testimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
     const { darkTheme } = useTheme();
     useEffect(() => {
-        fetch('http://localhost:5000/testimonials')
+        fetch('https://elite-athlete-camp-server.vercel.app/testimonials')
             .then(res => res.json())
             .then(data => setTestimonials(data))
     }, [])

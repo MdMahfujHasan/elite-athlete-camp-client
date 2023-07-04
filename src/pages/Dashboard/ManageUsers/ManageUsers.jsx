@@ -21,7 +21,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Make Admin'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                fetch(`https://elite-athlete-camp-server.vercel.app/users/admin/${user._id}`, {
                     method: 'PATCH'
                 })
                     .then(res => res.json())
@@ -50,7 +50,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Make Instructor'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+                fetch(`https://elite-athlete-camp-server.vercel.app/users/instructor/${user._id}`, {
                     method: 'PATCH'
                 })
                     .then(res => res.json())
@@ -82,7 +82,7 @@ const ManageUsers = () => {
                 const updatedUser = { ...user };
                 delete updatedUser.role;
 
-                fetch(`http://localhost:5000/users/role/${user._id}`, {
+                fetch(`https://elite-athlete-camp-server.vercel.app/users/role/${user._id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ const ManageUsers = () => {
 
 
     // const handleDeleteUser = () => {
-    //     fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    //     fetch(`https://elite-athlete-camp-server.vercel.app/users/admin/${user._id}`, {
     //         method: 'DELETE'
     //     })
     // }

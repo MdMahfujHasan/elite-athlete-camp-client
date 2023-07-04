@@ -10,7 +10,7 @@ const InstructorHome = () => {
     const onSubmit = data => {
         const newClass = { courseName: data.name, courseThumbnail: data.image, instructorName: data.instructorName, email: data.email, seats: parseInt(data.seats), price: parseInt(data.price), status: "pending", students: 0 };
         console.log(newClass);
-        fetch('http://localhost:5000/classes', {
+        fetch('https://elite-athlete-camp-server.vercel.app/classes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

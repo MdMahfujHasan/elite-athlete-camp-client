@@ -19,7 +19,7 @@ const AllClasses = () => {
             confirmButtonText: `${status === "approved" ? "Approve" : "Deny"}`
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/classes/${id}`, {
+                fetch(`https://elite-athlete-camp-server.vercel.app/classes/${id}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -62,7 +62,7 @@ const AllClasses = () => {
         event.preventDefault();
         const feedback = event.target.elements.feedback.value;
         console.log(feedback, id);
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://elite-athlete-camp-server.vercel.app/classes/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

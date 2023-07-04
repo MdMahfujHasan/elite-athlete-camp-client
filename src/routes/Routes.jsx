@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: "instructors/:id",
                 element: <InstructorClasses></InstructorClasses>,
-                loader: ({ params }) => fetch(`http://localhost:5000/instructors/${params.id}`)
+                loader: ({ params }) => fetch(`https://elite-athlete-camp-server.vercel.app/instructors/${params.id}`)
             },
             {
                 path: "classes",
