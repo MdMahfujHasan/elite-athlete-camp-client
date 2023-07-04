@@ -2,8 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
-// import useAdmin from "../../../hooks/useAdmin";
-// import useInstructor from "../../../hooks/useInstructor";
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 import useTheme from "../../../hooks/useTheme";
 import Swal from "sweetalert2";
@@ -11,8 +9,6 @@ import Swal from "sweetalert2";
 const NavBar = () => {
     const { user, logOut } = useAuth();
     const [cart] = useCart();
-    // const [isAdmin] = useAdmin();
-    // const [isInstructor] = useInstructor();
     const { darkTheme, setDarkTheme } = useTheme();
     const navigate = useNavigate();
 
@@ -22,9 +18,6 @@ const NavBar = () => {
         <Link to="/instructors">Instructors</Link>
         <Link to="/classes">Classes</Link>
         {user && <Link to="/dashboard/my-cart">Dashboard<span className={badgeClass}>{cart.length}</span></Link>}
-        {/* <li><Link to={isAdmin ? "/dashboard/admin-home" : (isInstructor ? "/dashboard/instructor-home" :
-            "/dashboard/user-home"
-        )}>Dashboard</Link></li> */}
         {!user && <>
             <Link to="/login">Login</Link>
             <Link to="/signup">Register</Link>

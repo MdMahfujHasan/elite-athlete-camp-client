@@ -1,7 +1,7 @@
 const UserHome = () => {
     return (
         <div>
-            user home
+            <h3 className="text-center text-xl p-8">User home coming soon...</h3>
         </div>
     );
 };

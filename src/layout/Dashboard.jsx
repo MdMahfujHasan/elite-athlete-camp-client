@@ -1,5 +1,4 @@
 import { Link, Outlet } from "react-router-dom";
-// import useAdmin from "../hooks/useAdmin";
 import useCart from "../hooks/useCart";
 import useMyClasses from "../hooks/useMyClasses";
 import useAllClasses from "../hooks/useAllClasses";
@@ -9,7 +8,6 @@ import useTheme from "../hooks/useTheme";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
-// import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
     const [cart] = useCart();
@@ -22,9 +20,8 @@ const Dashboard = () => {
 
     const navInfo = <>
         <Link to="/"><FcHome className="text-2xl" /></Link>
-        {/* <Link to="/dashboard">Home</Link>
         <Link to="/classes">Classes</Link>
-        <Link to="/instructors">Instructors</Link> */}
+        <Link to="/instructors">Instructors</Link>
         {
             isAdmin ?
                 <>

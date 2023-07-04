@@ -2,7 +2,6 @@ import { FiUsers } from 'react-icons/fi';
 import SectionTitle from "../../../components/SectionTitle";
 import useClasses from "../../../hooks/useClasses";
 import useTheme from '../../../hooks/useTheme';
-// import { AiOutlinePlus } from 'react-icons/ai';
 
 const PopularClasses = () => {
     const [classes] = useClasses();
@@ -22,9 +21,6 @@ const PopularClasses = () => {
                                 <p className="text-xl font-bold">${cls.price}</p>
                                 <p className="flex items-center gap-1 font-semibold"><FiUsers /> {cls.students}</p>
                             </div>
-                            {/* <div className="card-actions mt-4 justify-end">
-                                <button className="btn btn-xs border border-slate-400 hover:border-slate-500"><AiOutlinePlus />Add Class</button>
-                            </div> */}
                         </div>
                     </div>)
                 }

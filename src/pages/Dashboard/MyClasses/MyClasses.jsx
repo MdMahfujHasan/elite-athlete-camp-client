@@ -8,7 +8,7 @@ const MyClasses = () => {
     const [myClasses, refetch] = useMyClasses();
 
     const handleUpdate = id => {
-
+        console.log(id);
     }
 
     const handleDelete = id => {

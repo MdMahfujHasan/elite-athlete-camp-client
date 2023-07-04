@@ -2,7 +2,6 @@ import { FiUsers } from "react-icons/fi";
 import SectionTitle from "../../../components/SectionTitle";
 import useInstructors from "../../../hooks/useInstructors";
 import useTheme from "../../../hooks/useTheme";
-// import { AiOutlinePlus } from "react-icons/ai";
 
 const PopularInstructors = () => {
     const [instructors] = useInstructors();
@@ -19,9 +18,6 @@ const PopularInstructors = () => {
                         <div className={PopularClassesCardClass}>
                             <h2 className="text-3xl font-thin">{instructor.name}</h2>
                             <p className="flex items-center gap-1 font-semibold"><FiUsers /> {instructor.students}</p>
-                            {/* <div className="card-actions mt-4 justify-end">
-                                <button className="btn btn-xs border border-slate-400 hover:border-slate-500"><AiOutlinePlus />See Classes</button>
-                            </div> */}
                         </div>
                     </div>)
                 }

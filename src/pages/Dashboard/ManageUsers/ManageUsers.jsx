@@ -104,12 +104,6 @@ const ManageUsers = () => {
         });
     };
 
-
-    // const handleDeleteUser = () => {
-    //     fetch(`https://elite-athlete-camp-server.vercel.app/users/admin/${user._id}`, {
-    //         method: 'DELETE'
-    //     })
-    // }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -145,9 +139,6 @@ const ManageUsers = () => {
                                             <button className="btn btn-xs" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
                                         </div>
                                     }
-                                </td>
-                                <td>
-                                    {/* <button className="btn btn-xs btn-error" onClick={() => handleDeleteUser(user)}>delete user</button> */}
                                 </td>
                             </tr>)
                         }
