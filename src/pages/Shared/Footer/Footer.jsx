@@ -5,7 +5,7 @@ import useTheme from '../../../hooks/useTheme';
 const Footer = () => {
     const currentYear = format(new Date(), 'yyyy');
     const { darkTheme } = useTheme();
-    const footerClass = `footer footer-center p-10 text-primary-content ${darkTheme ? 'bg-indigo-950' : 'bg-violet-100 text-slate-700'}`;
+    const footerClass = `footer footer-center p-10 text-primary-content ${darkTheme ? 'bg-violet-950' : 'bg-violet-100 text-slate-700'}`;
 
     return (
         <footer className={footerClass}>

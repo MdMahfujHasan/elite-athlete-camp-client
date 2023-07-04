@@ -12,7 +12,7 @@ const Profile = () => {
     const [userDetails, refetch] = useProfile();
     const [hide, setHide] = useState(true);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const profileClass = `flex flex-col md:flex-row justify-around gap-4 p-8 ${darkTheme && "bg-violet-950 text-slate-300"}`
+    const profileClass = `flex flex-col md:flex-row justify-around gap-4 p-8 ${darkTheme && "bg-indigo-950 text-slate-300"}`
 
     const onSubmit = (updateUser) => {
         fetch(`http://localhost:5000/users/${user?.email}`, {

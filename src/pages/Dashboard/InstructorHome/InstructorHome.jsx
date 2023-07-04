@@ -30,8 +30,8 @@ const InstructorHome = () => {
     }
     return (
         <>
+            <SectionTitle title="New Class" heading="Add a Class"></SectionTitle>
             <div className="flex flex-col justify-center items-center">
-                <SectionTitle title="New Class" heading="Add a Class"></SectionTitle>
                 <div className="card w-full max-w-md shadow-2xl bg-base-100 pb-4">
 
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">

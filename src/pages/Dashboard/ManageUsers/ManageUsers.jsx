@@ -6,7 +6,7 @@ import { FaUser, FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('/users');
+        const res = await axiosSecure('/users');
         return res.data;
     })
 
@@ -140,7 +140,7 @@ const ManageUsers = () => {
                                         <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
                                     </> :
                                         <div className="space-x-2">
-                                            <span className="badge badge-outline badge-sm"><FaUser className="mr-1 text-xs" />User</span>
+                                            <span className="badge badge-neutral"><FaUser className="mr-1 text-xs" />User</span>
                                             <button className="btn btn-xs" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
                                             <button className="btn btn-xs" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
                                         </div>

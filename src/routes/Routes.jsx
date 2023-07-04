@@ -21,6 +21,8 @@ import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import Profile from "../pages/Shared/Profile/Profile";
 import Settings from "../pages/Shared/Settings/Settings";
 import InstructorClasses from "../pages/Instructors/InstructorClasses";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 const router = createBrowserRouter([
     {
@@ -46,14 +48,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "profile",
-                element: <Profile></Profile>,
-                children: [
-
-                ]
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
                 path: "settings",
-                element: <Settings></Settings>
+                element: <PrivateRoute><Settings></Settings></PrivateRoute>
             }
         ]
     },
@@ -69,29 +68,14 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
+            // user route
             {
                 path: "user-home",
                 element: <UserHome></UserHome>
             },
             {
-                path: "instructor-home",
-                element: <InstructorHome></InstructorHome>
-            },
-            {
-                path: "admin-home",
-                element: <AdminHome></AdminHome>
-            },
-            {
                 path: "my-cart",
                 element: <MyCart></MyCart>
-            },
-            {
-                path: "my-classes",
-                element: <MyClasses></MyClasses>
-            },
-            {
-                path: "all-classes",
-                element: <AllClasses></AllClasses>
             },
             {
                 path: "payment",
@@ -105,9 +89,27 @@ const router = createBrowserRouter([
                 path: "enrolled-classes",
                 element: <EnrolledClasses></EnrolledClasses>
             },
+            // instructor route
+            {
+                path: "instructor-home",
+                element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
+            },
+            {
+                path: "my-classes",
+                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
+            },
+            // admin route
+            {
+                path: "admin-home",
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+            },
+            {
+                path: "all-classes",
+                element: <AdminRoute><AllClasses></AllClasses></AdminRoute>
+            },
             {
                 path: "all-users",
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             }
         ]
     },

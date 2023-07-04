@@ -7,6 +7,8 @@ import usePaymentHistory from "../hooks/usePaymentHistory";
 import { FcHome } from 'react-icons/fc';
 import useTheme from "../hooks/useTheme";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 // import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
@@ -15,22 +17,33 @@ const Dashboard = () => {
     const [allClasses] = useAllClasses();
     const [paymentHistory] = usePaymentHistory();
     const { darkTheme, setDarkTheme } = useTheme();
-    // const [isAdmin] = useAdmin();
-    // const [isInstructor] = useInstructor();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const navInfo = <>
         <Link to="/"><FcHome className="text-2xl" /></Link>
         <Link to="/dashboard">Home</Link>
         <Link to="/classes">Classes</Link>
-        <Link to="/dashboard/my-cart">My Cart<span className="badge badge-warning badge-sm text-white ms-1">{cart.length}</span></Link>
-        <Link to="/dashboard/payment-history">Payment History<span className="badge badge-error badge-sm text-white ms-1">{paymentHistory.length}</span></Link>
-        <Link to="/dashboard/enrolled-classes">Enrolled Classes</Link>
-        <Link to="/dashboard/user-home">User Home</Link>
-        <Link to="/dashboard/instructor-home">Instructor Home</Link>
-        <Link to="/dashboard/admin-home">Admin Home</Link>
-        <Link to="/dashboard/my-classes">My Classes<span className="badge badge-info badge-sm text-white ms-1">{myClasses.length}</span></Link>
-        <Link to="/dashboard/all-classes">Manage Classes<span className="badge badge-success badge-sm text-white ms-1">{allClasses.length}</span></Link>
-        <Link to="/dashboard/all-users">Manage Users</Link>
+        <Link to="/instructors">Instructors</Link>
+        {
+            isAdmin ?
+                <>
+                    <Link to="/dashboard/admin-home">Admin Home</Link>
+                    <Link to="/dashboard/all-classes">Manage Classes<span className="badge badge-success badge-sm text-white ms-1">{allClasses.length}</span></Link>
+                    <Link to="/dashboard/all-users">Manage Users</Link>
+                </> :
+                isInstructor ?
+                    <>
+                        <Link to="/dashboard/instructor-home">Instructor Home</Link>
+                        <Link to="/dashboard/my-classes">My Classes<span className="badge badge-info badge-sm text-white ms-1">{myClasses.length}</span></Link>
+                    </> :
+                    <>
+                        <Link to="/dashboard/user-home">User Home</Link>
+                        <Link to="/dashboard/my-cart">My Cart<span className="badge badge-warning badge-sm text-white ms-1">{cart.length}</span></Link>
+                        <Link to="/dashboard/payment-history">Payment History<span className="badge badge-error badge-sm text-white ms-1">{paymentHistory.length}</span></Link>
+                        <Link to="/dashboard/enrolled-classes">Enrolled Classes</Link>
+                    </>
+        }
         <button onClick={() => setDarkTheme(!darkTheme)}>{darkTheme ? <BsMoonFill className="text-lg" /> : <BsSunFill className="text-lg" />}</button>
     </>
 

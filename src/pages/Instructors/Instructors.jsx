@@ -18,7 +18,7 @@ const Instructors = () => {
             <div className={PopularClassesClass}>
                 {
                     instructors.map(instructor => <div key={instructor._id} className={PopularClassesCardClass}>
-                        <figure><img src={instructor.img} alt="Shoes" /></figure>
+                        <figure><img src={instructor.img} /></figure>
                         <div className="card-body">
                             <h2 className="text-3xl font-thin">{instructor.name}</h2>
                             <div className="flex">
