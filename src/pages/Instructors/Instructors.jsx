@@ -5,6 +5,7 @@ import { FcSportsMode } from 'react-icons/fc';
 import { FaUsers } from 'react-icons/fa';
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Instructors = () => {
     const [instructors] = useInstructors();
@@ -14,6 +15,9 @@ const Instructors = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Instructors - EAC</title>
+            </Helmet>
             <SectionTitle title="Every Classes" heading="All Instructors"></SectionTitle>
             <div className={PopularClassesClass}>
                 {

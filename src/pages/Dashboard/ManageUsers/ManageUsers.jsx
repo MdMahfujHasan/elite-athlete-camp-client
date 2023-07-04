@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaUser, FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -105,47 +106,52 @@ const ManageUsers = () => {
     };
 
     return (
-        <div>
-            <div className="overflow-x-auto">
-                <table className="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>User Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            users.map((user, index) => <tr key={user._id} className={`${user.role === "admin" ? "bg-blue-200" : user.role === "instructor" ? "bg-green-200" : "bg-slate-200"
-                                }`}>
-                                <td>{index + 1}</td>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>
-                                    {user.role === "admin" ? <>
-                                        <span className="badge badge-info"><FaUserShield className="mr-1 text-base" />Admin</span>
-                                        <button className="btn btn-xs mx-2" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
-                                        <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
-                                    </> : user.role === "instructor" ? <>
-                                        <span className="badge badge-success"><FaChalkboardTeacher className="mr-1 text-base" />Instructor</span>
-                                        <button className="btn btn-xs mx-2" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
-                                        <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
-                                    </> :
-                                        <div className="space-x-2">
-                                            <span className="badge badge-neutral"><FaUser className="mr-1 text-xs" />User</span>
-                                            <button className="btn btn-xs" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
-                                            <button className="btn btn-xs" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
-                                        </div>
-                                    }
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
+        <>
+            <Helmet>
+                <title>Manage Users - EAC</title>
+            </Helmet>
+            <div>
+                <div className="overflow-x-auto">
+                    <table className="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>User Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users.map((user, index) => <tr key={user._id} className={`${user.role === "admin" ? "bg-blue-200" : user.role === "instructor" ? "bg-green-200" : "bg-slate-200"
+                                    }`}>
+                                    <td>{index + 1}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>
+                                        {user.role === "admin" ? <>
+                                            <span className="badge badge-info"><FaUserShield className="mr-1 text-base" />Admin</span>
+                                            <button className="btn btn-xs mx-2" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
+                                            <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
+                                        </> : user.role === "instructor" ? <>
+                                            <span className="badge badge-success"><FaChalkboardTeacher className="mr-1 text-base" />Instructor</span>
+                                            <button className="btn btn-xs mx-2" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
+                                            <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
+                                        </> :
+                                            <div className="space-x-2">
+                                                <span className="badge badge-neutral"><FaUser className="mr-1 text-xs" />User</span>
+                                                <button className="btn btn-xs" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
+                                                <button className="btn btn-xs" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

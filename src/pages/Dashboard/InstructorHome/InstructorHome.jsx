@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../../components/SectionTitle';
+import { Helmet } from 'react-helmet-async';
 
 const InstructorHome = () => {
     const { user } = useAuth();
@@ -32,6 +33,9 @@ const InstructorHome = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Home - Instructor</title>
+            </Helmet>
             <SectionTitle title="New Class" heading="Add a Class"></SectionTitle>
             <div className="flex flex-col justify-center items-center">
                 <div className="card w-full max-w-md shadow-2xl bg-base-100 pb-4">
