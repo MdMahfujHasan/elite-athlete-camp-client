@@ -23,6 +23,7 @@ import Settings from "../pages/Shared/Settings/Settings";
 import InstructorClasses from "../pages/Instructors/InstructorClasses";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import AllPayments from "../pages/Dashboard/AllPayments/AllPayments";
 
 const router = createBrowserRouter([
     {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
             {
                 path: "all-users",
                 element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            {
+                path: "all-payments",
+                element: <AdminRoute><AllPayments></AllPayments></AdminRoute>
             }
         ]
     },

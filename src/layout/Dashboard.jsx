@@ -29,6 +29,7 @@ const Dashboard = () => {
                     <Link to="/dashboard/admin-home">Admin Home</Link>
                     <Link to="/dashboard/all-classes">Manage Classes<span className="badge badge-success badge-sm text-white ms-1">{allClasses.length}</span></Link>
                     <Link to="/dashboard/all-users">Manage Users</Link>
+                    <Link to="/dashboard/all-payments">All Payments</Link>
                 </> :
                 isInstructor ?
                     <>

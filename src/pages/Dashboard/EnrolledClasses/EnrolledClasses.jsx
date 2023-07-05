@@ -3,6 +3,7 @@ import usePaymentHistory from "../../../hooks/usePaymentHistory";
 
 const EnrolledClasses = () => {
     const [paymentHistory] = usePaymentHistory();
+
     return (
         <>
             <Helmet>

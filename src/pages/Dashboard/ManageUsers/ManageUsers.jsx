@@ -130,17 +130,17 @@ const ManageUsers = () => {
                                     <td>{user.email}</td>
                                     <td>
                                         {user.role === "admin" ? <>
-                                            <span className="badge badge-info"><FaUserShield className="mr-1 text-base" />Admin</span>
+                                            <span className="badge badge-primary badge-md mr-2"><FaUserShield className="mr-1 text-lg" />Admin</span>
                                             <button className="btn btn-xs mx-2" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
                                             <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
                                         </> : user.role === "instructor" ? <>
-                                            <span className="badge badge-success"><FaChalkboardTeacher className="mr-1 text-base" />Instructor</span>
+                                            <span className="badge badge-success text-white badge-md mr-2"><FaChalkboardTeacher className="mr-1 text-lg" />Instructor</span>
                                             <button className="btn btn-xs mx-2" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
                                             <button className="btn btn-xs" onClick={() => handleMakeUser(user)}>Make User</button>
                                         </> :
                                             <div className="space-x-2">
-                                                <span className="badge badge-neutral"><FaUser className="mr-1 text-xs" />User</span>
-                                                <button className="btn btn-xs" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
+                                                <span className="badge badge-neutral badge-md mr-2"><FaUser className="mr-1 text-xs" />User</span>
+                                                <button className="btn btn-xs mx-2" onClick={() => handleMakeAdmin(user)}>Make Admin</button>
                                                 <button className="btn btn-xs" onClick={() => handleMakeInstructor(user)}>Make Instructor</button>
                                             </div>
                                         }

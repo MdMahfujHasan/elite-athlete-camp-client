@@ -12,7 +12,6 @@ const Instructors = () => {
     const { darkTheme } = useTheme();
     const PopularClassesClass = `grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-items-center p-8 gap-8 ${darkTheme && 'bg-slate-900'}`;
     const PopularClassesCardClass = `card w-96 shadow-xl ${darkTheme ? 'bg-indigo-950 text-white' : "bg-base-100"}`;
-
     return (
         <>
             <Helmet>
