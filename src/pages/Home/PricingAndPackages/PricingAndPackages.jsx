@@ -1,12 +1,14 @@
 import SectionTitle from "../../../components/SectionTitle";
 import { FaCheck, FaStar } from 'react-icons/fa';
+import useTheme from "../../../hooks/useTheme";
 
 const PricingAndPackages = () => {
+    const { darkTheme } = useTheme();
     return (
         <div>
             <SectionTitle title="Choose One" heading="Pricing And Packages"></SectionTitle>
             <div className="flex flex-col lg:flex-row gap-4 justify-center items-center lg:p-4">
-                <div className="card w-96 border bg-slate-100">
+                <div className={`card w-96 border ${darkTheme ? "bg-slate-800 text-white border-slate-600" : "bg-slate-100"}`}>
                     <div className="card-body">
                         <div className="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-center p-4 rounded">
                             <h2 className="text-3xl">Basic</h2>
@@ -50,7 +52,7 @@ const PricingAndPackages = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 border bg-slate-100">
+                <div className={`card w-96 border ${darkTheme ? "bg-slate-800 text-white border-slate-600" : "bg-slate-100"}`}>
                     <div className="card-body">
                         <div className="bg-gradient-to-r from-amber-400 to-amber-600 text-white text-center p-4 rounded">
                             <div className="flex items-center justify-center bg-white text-amber-400 rounded-full w-2/3 mx-auto">
@@ -103,7 +105,7 @@ const PricingAndPackages = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 border bg-slate-100">
+                <div className={`card w-96 border ${darkTheme ? "bg-slate-800 text-white border-slate-600" : "bg-slate-100"}`}>
                     <div className="card-body">
                         <div className="bg-gradient-to-r from-purple-400 to-purple-600 text-white text-center p-4 rounded">
                             <h2 className="text-3xl">Premium</h2>

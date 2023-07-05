@@ -5,19 +5,35 @@ import useCart from "../../../hooks/useCart";
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 import useTheme from "../../../hooks/useTheme";
 import Swal from "sweetalert2";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
     const [cart] = useCart();
     const { darkTheme, setDarkTheme } = useTheme();
     const navigate = useNavigate();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
+    let to = '/dashboard/user-home';
+
+    if (isAdmin) {
+        to = '/dashboard/admin-home';
+    }
+
+    if (isInstructor) {
+        to = '/dashboard/instructor-home';
+    }
 
     const badgeClass = `badge badge-sm ms-1 ${!darkTheme && "badge-neutral"}`;
     const navInfo = <>
         <Link to="/">Home</Link>
         <Link to="/instructors">Instructors</Link>
         <Link to="/classes">Classes</Link>
-        {user && <Link to="/dashboard/my-cart">Dashboard<span className={badgeClass}>{cart.length}</span></Link>}
+        {user && <Link to={to}>Dashboard
+            {(!isAdmin && !isInstructor) && <span className={badgeClass}>{cart?.length}</span>}
+        </Link>}
         {!user && <>
             <Link to="/login">Login</Link>
             <Link to="/signup">Register</Link>

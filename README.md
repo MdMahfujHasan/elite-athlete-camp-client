@@ -16,7 +16,7 @@ This project is about a camp where the users are summer camp students and instru
 
 ## Used Packages
 
-Stripe, axios, date-fns, Firebase, framer-motion, localforage, match-sorter, React, React DOM, react-hook-form, react-icons, react-router-dom, sort-by, SweetAlert2, Swiper.
+Stripe, axios, date-fns, Firebase, framer-motion, localforage, match-sorter, React, React DOM, react-hook-form, react-icons, react-router-dom, sort-by, SweetAlert2, Swiper, recharts.
 
 ## Live Site
 
