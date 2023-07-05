@@ -39,7 +39,7 @@ const Instructors = () => {
                             </div>
                             <div className="card-actions mt-4 justify-end">
                                 <Link to={`/instructors/${instructor._id}`}>
-                                    <button className="btn btn-xs btn-accent"><FaUsers />See Classes</button>
+                                    <button className="btn btn-sm btn-success text-white"><FaUsers />See Classes</button>
                                 </Link>
                             </div>
                         </div>

@@ -2,6 +2,7 @@ import { FiUsers } from "react-icons/fi";
 import SectionTitle from "../../../components/SectionTitle";
 import useInstructors from "../../../hooks/useInstructors";
 import useTheme from "../../../hooks/useTheme";
+import { Link } from "react-router-dom";
 
 const PopularInstructors = () => {
     const [instructors] = useInstructors();
@@ -21,6 +22,13 @@ const PopularInstructors = () => {
                         </div>
                     </div>)
                 }
+            </div>
+            <div className="text-center">
+                <Link to="/instructors">
+                    <button className="btn bg-gradient-to-r from-blue-500 via-teal-500 to-emerald-500 text-white">
+                        All Instructors
+                    </button>
+                </Link>
             </div>
         </>
     );

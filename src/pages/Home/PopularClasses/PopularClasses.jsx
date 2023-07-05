@@ -2,6 +2,7 @@ import { FiUsers } from 'react-icons/fi';
 import SectionTitle from "../../../components/SectionTitle";
 import useClasses from "../../../hooks/useClasses";
 import useTheme from '../../../hooks/useTheme';
+import { Link } from 'react-router-dom';
 
 const PopularClasses = () => {
     const [classes] = useClasses();
@@ -24,6 +25,13 @@ const PopularClasses = () => {
                         </div>
                     </div>)
                 }
+            </div>
+            <div className="text-center">
+                <Link to="/classes">
+                    <button className="btn bg-gradient-to-r from-blue-500 via-teal-500 to-emerald-500 text-white">
+                        All Classes
+                    </button>
+                </Link>
             </div>
         </>
     );

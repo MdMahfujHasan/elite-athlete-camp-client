@@ -8,6 +8,7 @@ import camp3 from '../../../assets/camp-3.jpg'
 import camp4 from '../../../assets/camp-4.jpg'
 import camp5 from '../../../assets/camp-5.jpg'
 import camp6 from '../../../assets/camp-6.jpg'
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
@@ -18,7 +19,9 @@ const Banner = () => {
                         <img src={camp1} className="h-screen w-full" />
                         <div className="absolute left-14 top-52">
                             <h3 className="text-3xl md:text-5xl w-2/3 text-slate-700 font-extrabold leading-snug">Forge Lasting Bonds and Unforgettable Memories at Our Elite Athlete Camp</h3>
-                            <button className="btn btn-primary mt-4">Get Started</button>
+                            <Link to="/classes">
+                                <button className="btn btn-primary mt-4">Get Started</button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -36,7 +39,9 @@ const Banner = () => {
                         <img src={camp3} className="h-screen w-full" />
                         <div className="absolute left-14 top-52">
                             <h3 className="text-3xl md:text-5xl w-2/3 text-white font-extrabold leading-tight">Experience the Power of Teamwork at Our Dynamic Sports Camp</h3>
-                            <button className="btn btn-error mt-4">See Classes</button>
+                            <Link to="/classes">
+                                <button className="btn btn-error mt-4">See Classes</button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -54,7 +59,9 @@ const Banner = () => {
                         <img src={camp5} className="h-screen w-full" />
                         <div className="absolute left-14 top-52">
                             <h3 className="text-3xl md:text-5xl w-2/3 text-white font-extrabold leading-tight">Get Your Game On at Our Action-Packed Sports Camp</h3>
-                            <button className="btn btn-warning mt-4">See Instructors</button>
+                            <Link to="/instructors">
+                                <button className="btn btn-warning mt-4">See Instructors</button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>

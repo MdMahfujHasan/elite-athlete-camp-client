@@ -40,7 +40,7 @@ const ClassCard = ({ cls }) => {
                         .then(data => {
                             if (data.insertedId) {
                                 Swal.fire(
-                                    'Good job!',
+                                    'Great!',
                                     'Course is added to cart',
                                     'success'
                                 )
@@ -79,9 +79,9 @@ const ClassCard = ({ cls }) => {
                     <div className="badge badge-outline"><b className="mr-1">{students}</b> students</div>
                     <div className="badge badge-outline">${price}</div>
                 </div>
-                <div>
+                <div className='mt-4'>
                     <button onClick={() => handleAddToCart(cls)}
-                        className="btn btn-xs btn-accent"
+                        className="btn btn-sm btn-accent text-white"
                         disabled={(availableSeats === 0 && true) || userDetails[0]?.role === "admin" || userDetails[0]?.role === "instructor"}
                     >
                         <BiSolidCartAdd className='text-lg' />Add Course
